@@ -1,5 +1,10 @@
 # theCheapBears
   ## Web Apps With Angular4 / Telerik Academy Course Project
+  ### [live demo](https://thecheapbearsproject.firebaseapp.com/)
+
+How it works:
+  What you deploy is the production built dist folder which is served by FB;
+  The database have to be setup internally in Angular;
 
 # Course Project
 _Web Applications with Angular_
