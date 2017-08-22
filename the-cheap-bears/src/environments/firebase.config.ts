@@ -1,8 +1,8 @@
-export const firebaseConfig = {
-  apiKey: 'AIzaSyB3qq6qjhHGl2Ha9vAccD329AEwLoY1KxM',
-  authDomain: 'thecheapbearsproject.firebaseapp.com',
-  databaseURL: 'https://thecheapbearsproject.firebaseio.com',
-  projectId: 'thecheapbearsproject',
-  storageBucket: '',
-  messagingSenderId: '864722532066'
-};
+export const   firebaseConfig = {
+    apiKey: 'AIzaSyAM2ORMfsnuGkZgMnlb-WJr0dW--2cH1_o',
+    authDomain: 'thecheapbears-38177.firebaseapp.com',
+    databaseURL: 'https://thecheapbears-38177.firebaseio.com',
+    projectId: 'thecheapbears-38177',
+    storageBucket: 'thecheapbears-38177.appspot.com',
+    messagingSenderId: '396231135488'
+  };
