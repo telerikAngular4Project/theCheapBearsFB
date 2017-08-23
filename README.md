@@ -9,6 +9,7 @@ Style guide:
   * [style guide](https://angular.io/guide/styleguide)
   * Each feature folder(e.g. users, home, etc.) has routing module, this is how Angular recommend handling routing.
   * Each feature folder has shared folder.
+  * Core module holds services
 
 
 # Course Project
