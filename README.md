@@ -6,9 +6,9 @@ How it works:
   What you deploy is the production built dist folder which is served by FB;
   
 Style guide:
-  (style guide)[https://angular.io/guide/styleguide]
-  Each feature folder(e.g. users, home, etc.) has routing module, this is how Angular recommend handling routing.
-  Each feature folder has shared folder.
+  * (style guide)[https://angular.io/guide/styleguide]
+  * Each feature folder(e.g. users, home, etc.) has routing module, this is how Angular recommend handling routing.
+  * Each feature folder has shared folder.
 
 
 # Course Project
