@@ -4,7 +4,13 @@
 
 How it works:
   What you deploy is the production built dist folder which is served by FB;
-  The database have to be setup internally in Angular;
+  
+Style guide:
+  * [style guide](https://angular.io/guide/styleguide)
+  * Each feature folder(e.g. users, home, etc.) has routing module, this is how Angular recommend handling routing.
+  * Each feature folder has shared folder.
+  * Core module holds services
+
 
 # Course Project
 _Web Applications with Angular_
