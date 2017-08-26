@@ -29,6 +29,12 @@
     transition: background-color 0.7s;
 }
 
+.navbar-nav li a:focus {
+    transition: 0.3s;
+    background-color: #BE6E6C ;
+    color: white;
+}
+
 .navbar-nav li a:hover {
     background-color: #f1f1a1;
     transition: background-color 0.7s;
@@ -42,3 +48,5 @@
 .icon-bar {
     background-color: black;
 }
+
+

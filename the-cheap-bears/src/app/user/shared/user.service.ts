@@ -10,10 +10,14 @@ export class UserService {
 
 
     register(username: string, email: string, password: string) {
-        return this.afAuth.auth.createUserWithEmailAndPassword(username, password)
+       return this.afAuth.auth.createUserWithEmailAndPassword(email, password)
             .then((user) => {
                 const updateName: { displayName: string } = { displayName: username };
-                user.updateProfile(updateName);
+                return user.updateProfile(updateName);
             });
+    }
+
+    login(email: string, password: string) {
+        return this.afAuth.auth.signInWithEmailAndPassword(email, password);
     }
 }

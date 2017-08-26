@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { UserService } from './../shared/user.service';
 import { usernameRegEx, passwordRegEx } from './../../helpers/patterns';
 
@@ -8,19 +9,21 @@ import { usernameRegEx, passwordRegEx } from './../../helpers/patterns';
     templateUrl: './register.component.html',
     styleUrls: ['./register.component.css']
 })
+
 export class RegisterComponent {
 
-    registerForm: FormGroup;
+    private registerForm: FormGroup;
+    
 
-    constructor(private fb: FormBuilder, private userService: UserService) {
+    constructor(private fb: FormBuilder, private userService: UserService, private router: Router) {
         this.createForm();
     }
 
     createForm() {
         this.registerForm = this.fb.group({
-            username: ['',[Validators.required]],
-            email: ['',[Validators.required]],
-            pwd: ['', [Validators.required]],
+            username: ['',[Validators.required, Validators.pattern(usernameRegEx)]],
+            email: ['',[Validators.required, Validators.email]],
+            pwd: ['', [Validators.required, Validators.pattern(passwordRegEx)]],
         })
     }
 
@@ -28,14 +31,21 @@ export class RegisterComponent {
     get email() { return this.registerForm.get('email'); }
     get pwd() { return this.registerForm.get('pwd'); }
 
+    submitted = false;
+
     // form submit
     onSubmit() {
-        const userData = this.registerForm;
-        console.log(userData);
-        // this.userService.register(this.username, this.email, this.pwd)
-        // .catch((err) => {
-        //     //do something with errors(this is serverside validation)
-        // })
+        const userData = this.registerForm.value;
+        this.userService.register(userData.username, userData.email, userData.pwd)
+        .then(() => {
+            this.submitted = true;
+            setTimeout(() => {
+                this.router.navigateByUrl('');
+            }, 3000);
+        })
+        .catch((err) => {
+            console.log(err.message);
+            //do something with errors(this is serverside validation)
+        })
     }
-
 }
