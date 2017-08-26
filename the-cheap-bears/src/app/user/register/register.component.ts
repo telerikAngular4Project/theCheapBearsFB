@@ -1,53 +1,41 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
-import { AngularFireAuth } from 'angularfire2/auth';
-import * as firebase from 'firebase/app';
+import { UserService } from './../shared/user.service';
+import { usernameRegEx, passwordRegEx } from './../../helpers/patterns';
 
-
-// all this will be one component called auth whis implements register and login in one template
 @Component({
     selector: 'app-register',
     templateUrl: './register.component.html',
     styleUrls: ['./register.component.css']
 })
-export class RegisterComponent implements OnInit {
-    authType: String = '';
-    authForm: FormGroup;
-    title: String = '';
+export class RegisterComponent {
 
-    constructor(
-        public afAuth: AngularFireAuth,
-        private route: ActivatedRoute,
-        private router: Router,
-        private fb: FormBuilder
-    ) {
-        this.authForm = this.fb.group({
-            'email': ['', Validators.required],
-            'password': ['', Validators.required]
-        });
+    registerForm: FormGroup;
+
+    constructor(private fb: FormBuilder, private userService: UserService) {
+        this.createForm();
     }
 
-    ngOnInit() {
-        this.route.url.subscribe((data) => {
-            this.authType = data[data.length - 1].path;
-            this.title = (this.authType === 'login') ? 'Sign in' : 'Sign up';
-            if (this.authType === 'register') {
-                this.authForm.addControl('username', new FormControl());
-            }
-        });
+    createForm() {
+        this.registerForm = this.fb.group({
+            username: ['',[Validators.required]],
+            email: ['',[Validators.required]],
+            pwd: ['', [Validators.required]],
+        })
     }
 
-    // this should go to the user service 
-    register(username: string, email: string, password: string) {
-        this.afAuth.auth.createUserWithEmailAndPassword(username, password)
-            .then((user) => {
-                const updateName: { displayName: string } = { displayName: username };
-                user.updateProfile(updateName);
-            })
-            .catch((err) => {
-                const msg = err.message;
-                console.log(msg);
-            });
+    get username() { return this.registerForm.get('username'); }
+    get email() { return this.registerForm.get('email'); }
+    get pwd() { return this.registerForm.get('pwd'); }
+
+    // form submit
+    onSubmit() {
+        const userData = this.registerForm;
+        console.log(userData);
+        // this.userService.register(this.username, this.email, this.pwd)
+        // .catch((err) => {
+        //     //do something with errors(this is serverside validation)
+        // })
     }
+
 }
