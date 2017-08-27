@@ -19,23 +19,23 @@ export class LoginComponent {
     createForm() {
         this.loginForm = this.fb.group({
             email: ['', [Validators.required, Validators.email]],
-            pwd: ['', [Validators.required, Validators.pattern(passwordRegEx)]],
-        })
+            password: ['', [Validators.required, Validators.pattern(passwordRegEx)]],
+        });
     }
 
-    get email() { return this.loginForm.get('email') }
-    get pwd() { return this.loginForm.get('pwd') }
-    
+    get email() { return this.loginForm.get('email'); }
+    get password() { return this.loginForm.get('password'); }
+
         onSubmit() {
             const userData = this.loginForm.value;
-            this.userService.login(userData.email, userData.pwd)
+            this.userService.login(userData.email, userData.password)
             .then(() => {
                 this.router.navigateByUrl('');
             })
             .catch((err) => {
                 console.log(err.message);
                 //do something with errors(this is serverside validation)
-            })
+            });
         }
 
 }
