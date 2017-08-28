@@ -31,7 +31,6 @@ import {TripsModule} from './trips/trips.module';
     AngularFireAuthModule,
     AngularFireDatabaseModule,
     UserModule,
-    TripsModule,
     SharedModule,
     AppRoutingModule
   ],

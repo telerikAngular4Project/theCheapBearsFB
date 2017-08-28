@@ -18,6 +18,8 @@ export class RegisterComponent {
         this.createForm();
     }
 
+    submitted = false;
+
     createForm() {
         this.registerForm = this.fb.group({
             username: ['', [Validators.required, Validators.pattern(usernameRegEx)]],
@@ -30,7 +32,6 @@ export class RegisterComponent {
     get email() { return this.registerForm.get('email'); }
     get password() { return this.registerForm.get('password'); }
 
-    submitted = false;
 
     // form submit
     onSubmit() {

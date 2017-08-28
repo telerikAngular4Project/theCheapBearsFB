@@ -5,11 +5,12 @@ import { PageNotFoundComponent } from './shared/not-found/not-found.component';
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent },
+    { path: 'trips', loadChildren: './trips/trips.module#TripsModule' },
     { path: '**', component: PageNotFoundComponent },
 ];
 
 @NgModule({
-  imports: [ RouterModule.forRoot(appRoutes) ],
-  exports: [ RouterModule ],
+    imports: [RouterModule.forRoot(appRoutes)],
+    exports: [RouterModule],
 })
 export class AppRoutingModule { }

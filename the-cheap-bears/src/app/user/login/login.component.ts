@@ -34,7 +34,7 @@ export class LoginComponent {
             })
             .catch((err) => {
                 console.log(err.message);
-                //do something with errors(this is serverside validation)
+                // do something with errors(this is serverside validation)
             });
         }
 
