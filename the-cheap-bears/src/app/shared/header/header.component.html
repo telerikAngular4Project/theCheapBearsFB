@@ -12,6 +12,7 @@
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
                 <li><a routerLink="trips">Trips</a></li>
+                <li *ngIf="authService.user | async"><a routerLink="createTrip">Create trip</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li *ngIf="!(authService.user | async)"><a routerLink="login">Log in</a></li>
