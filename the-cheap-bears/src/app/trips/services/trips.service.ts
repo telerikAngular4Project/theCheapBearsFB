@@ -6,7 +6,7 @@ import 'rxjs/add/operator/map';
 
 import {Trip} from '../../models/trip';
 import {AuthService} from '../../shared/services/auth.service';
-import {Observable} from "rxjs/Observable";
+import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class TripsService {

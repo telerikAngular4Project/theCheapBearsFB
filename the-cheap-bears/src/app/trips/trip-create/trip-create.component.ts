@@ -21,7 +21,7 @@ export class TripCreateComponent implements OnInit {
   name: string;
   additionalComment: string;
 
-  private datePickerOptions = {
+  public datePickerOptions = {
     format: 'DD.MM.YYYY',
     locale: 'bg',
   };

@@ -5,8 +5,8 @@ import {TripsListingComponent} from './trips-listing/trips-listing.component';
 import {TripCreateComponent} from './trip-create/trip-create.component';
 
 const tripsRoutes: Routes = [
-  { path: 'trips', component: TripsListingComponent},
-  { path: 'createTrip', component: TripCreateComponent}
+  { path: '', component: TripsListingComponent},
+  { path: 'create', component: TripCreateComponent}
 
 ];
 
