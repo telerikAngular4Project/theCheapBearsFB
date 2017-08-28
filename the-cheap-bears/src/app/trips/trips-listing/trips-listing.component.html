@@ -1,0 +1,35 @@
+  <div class="row">
+    <ul>
+      <section *ngFor="let trip of allTripsListing" class="content">
+        <div class="col-md-8 col-md-offset-2">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <div class="table-container">
+                <table class="table table-filter">
+                  <tbody>
+                  <tr>
+                    <td>
+                      <div class="media">
+                        <div class="media-body">
+                          <h3 class="title">{{trip.fromCity}} - {{trip.toCity}}
+                          <span class="pull-right">{{trip.date}}</span>
+                          </h3>
+                          <p>Time: {{trip.departureTime.hours}} : {{trip.departureTime.minutes}} </p>
+                          <p>Free seats: {{trip.seats}}</p>
+                          <p>Price: {{trip.price}}</p>
+                          <p *ngIf="trip.additionalComment">Additional comments: {{trip.additionalComment}}</p>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </ul>
+
+
+  </div>
