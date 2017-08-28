@@ -37,8 +37,9 @@
 
 .navbar-nav li a:hover {
     background-color: #f1f1a1;
+    color: #3d370d;
     transition: background-color 0.7s;
-    /* border-bottom: 2px solid red; */
+    transition: color 0.3s;
 }
 
 .navbar-toggle {
