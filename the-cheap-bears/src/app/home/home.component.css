@@ -1,0 +1,67 @@
+.sub-header {
+    position: relative;
+    background-color: #287fb8;
+    box-shadow: 
+    inset 0px 11px 5px -10px #1D5C85,
+    inset 0px -11px 5px -10px #1D5C85; 
+    color: #fff;
+    height: 150px;
+    
+}
+
+.sub-header h1, .sub-header h2 {
+    text-align: center;
+    margin: 20px 0;
+    
+}
+
+.sub-header .wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+}
+
+.sub-header h1 {
+    font-weight: bold;
+}
+
+.sub-header h2 {
+    font-size: 18px;
+    font-style: italic;
+}
+
+.main-wrapper {
+    background-image: url('./../../assets/images/paper-world-map-travel-wallpaper (1).jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center 25%;
+    background-color: #fff;
+    margin-top: 20px;
+}
+
+main {
+    margin-top: 20px;
+    min-height: 1000px;
+}
+
+.search, .create {
+    background-color: rgba(214, 83, 25, 0.7);
+    border-radius: 10px;
+    color: #fff;
+    display: inline-block;
+    height: 100px;
+    text-align: center;
+    line-height: 100px;
+    font-size: 22px;
+    text-transform: uppercase;
+    width: 400px;
+}
+
+.some-content {
+    background-color: #eee;
+    min-height: 500px;
+    margin-top: 160px;
+}
