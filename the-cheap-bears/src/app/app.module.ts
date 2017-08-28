@@ -15,7 +15,7 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './shared/not-found/not-found.component';
 
-
+import {TripsModule} from './trips/trips.module';
 
 @NgModule({
   declarations: [
@@ -31,8 +31,9 @@ import { PageNotFoundComponent } from './shared/not-found/not-found.component';
     AngularFireAuthModule,
     AngularFireDatabaseModule,
     UserModule,
-    AppRoutingModule,
-    SharedModule
+    TripsModule,
+    SharedModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

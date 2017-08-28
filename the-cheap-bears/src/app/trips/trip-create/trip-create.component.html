@@ -1,0 +1,100 @@
+<div class="container">
+  <h2 class="text-center">Create new trip</h2>
+  <form [formGroup]="tripForm" (ngSubmit)="submitTripData(tripForm.value)">
+    <div class="col-md-6 form-line">
+      <div class="form-group">
+        <label>From: </label>
+        <select formControlName="fromCity" class="form-control">
+          <option *ngFor="let town of towns" [value]="town">{{town}}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>To: </label>
+        <select formControlName="toCity" class="form-control">
+          <option *ngFor="let town of towns" [value]="town">{{town}}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+      <label for="date">Date: </label>
+      <ng2-datepicker id="date" [options]=datePickerOptions formControlName="date"></ng2-datepicker>
+      </div>
+
+      <div class="form-group">
+      <label for="depTime">Departure time: </label>
+      <timepicker formControlName="departureTime" id="depTime"></timepicker>
+      </div>
+    </div>
+
+
+
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="price">Price: </label>
+        <input type="number" class="form-control" id="price" formControlName="price">
+      </div>
+
+      <div class="form-group">
+        <label for="seats">Seats: </label>
+        <input type="number" class="form-control" id="seats" formControlName="seats">
+      </div>
+      <div class="form-group">
+        <label for="additionalComment">Additional comment: </label>
+        <textarea class="form-control" id="additionalComment" formControlName="additionalComment"></textarea>
+      </div>
+      <div>
+
+        <input type="submit" class="btn btn-success submit" value="Create trip" [disabled]="!tripForm.valid">
+      </div>
+
+    </div>
+  </form>
+</div>
+
+
+
+<!--<form [formGroup]="tripForm" (ngSubmit)="submitTripData(tripForm.value)">-->
+  <!--<div class="form-group">-->
+    <!--<label>From: </label>-->
+    <!--<select formControlName="fromCity">-->
+        <!--<option *ngFor="let town of towns" [value]="town">{{town}}</option>-->
+    <!--</select>-->
+  <!--</div>-->
+
+  <!--<div class="form-group">-->
+    <!--<label>To: </label>-->
+    <!--<select formControlName="toCity">-->
+      <!--<option *ngFor="let town of towns" [value]="town">{{town}}</option>-->
+    <!--</select>-->
+  <!--</div>-->
+
+  <!--<div class="form-group">-->
+    <!--<label for="date">Date: </label>-->
+    <!--<ng2-datepicker id="date" [options]=datePickerOptions formControlName="date"></ng2-datepicker>-->
+  <!--</div>-->
+
+  <!--<div class="form-group">-->
+    <!--<label for="depTime">Departure time: </label>-->
+    <!--<timepicker formControlName="departureTime" id="depTime"></timepicker>-->
+  <!--</div>-->
+
+  <!--<div class="form-group">-->
+    <!--<label for="price">Price: </label>-->
+    <!--<input type="number" id="price" formControlName="price">-->
+  <!--</div>-->
+
+  <!--<div class="form-group">-->
+    <!--<label for="seats">Seats: </label>-->
+    <!--<input type="number" id="seats" formControlName="seats">-->
+  <!--</div>-->
+
+
+  <!--<div class="form-group">-->
+    <!--<label for="additionalComment">Additional comment: </label>-->
+    <!--<textarea id="additionalComment" formControlName="additionalComment"></textarea>-->
+  <!--</div>-->
+
+  <!--<input type="submit" class="btn" value="Create trip" [disabled]="!tripForm.valid">-->
+
+
+<!--</form>-->
