@@ -1,10 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
-@import url('https://fonts.googleapis.com/css?family=Ubuntu');
 
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
 body {
-  min-height: 1220px;
+  background-image: url('./assets/images/paper-world-map-travel-wallpaper.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: 100%;
   font-family: 'Ubuntu', sans-serif;
-}
+  position: relative;
+}  
+
 html {
-    position: relative;
+  height: 100%;
 }
+

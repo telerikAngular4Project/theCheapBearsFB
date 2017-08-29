@@ -12,7 +12,7 @@ import { usernameRegEx, passwordRegEx } from './../../helpers/patterns';
 
 export class RegisterComponent {
 
-    private registerForm: FormGroup;
+    public registerForm: FormGroup;
 
     constructor(private fb: FormBuilder, private userService: UserService, private router: Router) {
         this.createForm();
@@ -45,7 +45,7 @@ export class RegisterComponent {
         })
         .catch((err) => {
             console.log(err.message);
-            //do something with errors(this is serverside validation)
+            // do something with errors(this is serverside validation)
         });
     }
 }

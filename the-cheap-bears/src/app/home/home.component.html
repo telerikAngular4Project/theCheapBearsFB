@@ -1,3 +1,29 @@
-<p>
-  home works!
-</p>
+<div class="container-fluid sub-header">
+    <div class=wrapper>
+        <h1>NoTicket</h1>
+        <h2>Find or offer the best way to travel from one place to another.</h2>
+    </div>
+</div>
+<div class="container-fluid main-wrapper">
+    <main class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 anchor-container">
+                <div class="col-xs-12 col-sm-6 anchor-wrapper">
+                        <a routerLink="/search" class="search">Search trip</a>
+                </div>
+                <div *ngIf="authService.user | async" class="col-xs-12 col-sm-6 anchor-wrapper">
+                        <a routerLink="/trips/create" class="create">Create trip</a>>
+                </div>
+                <div *ngIf="!(authService.user | async)" class="col-xs-12 col-sm-6 anchor-wrapper">
+                        <a routerLink="login" class="create">Create trip</a>>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+<div class="container-fluid some-content">
+    <div class="container">
+        some
+    </div>
+</div>
+<div class="separator"></div>

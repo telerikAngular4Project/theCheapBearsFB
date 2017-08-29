@@ -11,7 +11,7 @@ import { passwordRegEx } from './../../helpers/patterns';
 })
 export class LoginComponent {
 
-    private loginForm: FormGroup;
+    public loginForm: FormGroup;
     constructor(private fb: FormBuilder, private userService: UserService, private router: Router) {
         this.createForm();
     }
@@ -23,8 +23,8 @@ export class LoginComponent {
         });
     }
 
-    get email() { return this.loginForm.get('email'); }
-    get password() { return this.loginForm.get('password'); }
+    get email(): any { return this.loginForm.get('email'); }
+    get password(): any { return this.loginForm.get('password'); }
 
         onSubmit() {
             const userData = this.loginForm.value;
