@@ -6,10 +6,24 @@
 </div>
 <div class="container-fluid main-wrapper">
     <main class="container">
-        <a href="" class="search">Search trip</a>
-        <a href="" class="create">Create trip</a>
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 anchor-container">
+                <div class="col-xs-12 col-sm-6 anchor-wrapper">
+                        <a routerLink="/search" class="search">Search trip</a>
+                </div>
+                <div *ngIf="authService.user | async" class="col-xs-12 col-sm-6 anchor-wrapper">
+                        <a routerLink="/trips/create" class="create">Create trip</a>>
+                </div>
+                <div *ngIf="!(authService.user | async)" class="col-xs-12 col-sm-6 anchor-wrapper">
+                        <a routerLink="login" class="create">Create trip</a>>
+                </div>
+            </div>
+        </div>
     </main>
 </div>
 <div class="container-fluid some-content">
-    most popular destinations create subcomponents here perhaps
+    <div class="container">
+        some
+    </div>
 </div>
+<div class="separator"></div>
