@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile-page',
-  templateUrl: './profile-page.component.html',
   styleUrls: ['./profile-page.component.css'],
   template: `
   <div class="container">

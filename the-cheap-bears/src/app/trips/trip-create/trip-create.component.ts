@@ -53,8 +53,6 @@ export class TripCreateComponent implements OnInit {
         });
     }
 
-    get fromCity(): any { return this.tripForm.get('fromCity'); }
-    get toCity(): any { return this.tripForm.get('toCity'); }
     get departureTime(): any { return this.tripForm.get('departureTime'); }
     get price(): any { return this.tripForm.get('price'); }
     get seats(): any { return this.tripForm.get('seats'); }

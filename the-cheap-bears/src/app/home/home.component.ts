@@ -19,5 +19,4 @@ export class HomeComponent implements OnInit {
         this.trips = this.dataService.getCollection('trips');
         this.users = this.dataService.getCollection('users');
     }
-
 }
