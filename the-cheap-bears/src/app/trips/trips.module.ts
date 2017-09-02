@@ -5,8 +5,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { DatePickerModule } from 'ng2-datepicker';
 import { TimepickerModule } from 'ngx-bootstrap/timepicker';
-
 import { TripsRoutingModule } from './trips-routing.module';
+
 import { TripsListingComponent } from './trips-listing/trips-listing.component';
 import { TripCreateComponent } from './trip-create/trip-create.component';
 

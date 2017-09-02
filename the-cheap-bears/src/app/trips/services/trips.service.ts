@@ -10,7 +10,7 @@ import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class TripsService {
-  private _townsUrl = 'https://raw.githubusercontent.com/dbonev91/Bulgaria-Towns-JSON/master/towns.json';
+  private _townsUrl = 'http://api.geonames.org/searchJSON?country=BG&cities=cities1000&maxRows=300&username=bears';
   private trip: Trip;
   private tripsCollectionFb: FirebaseListObservable<any>;
 
