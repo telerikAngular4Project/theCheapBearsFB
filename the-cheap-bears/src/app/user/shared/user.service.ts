@@ -21,4 +21,9 @@ export class UserService {
     login(email: string, password: string) {
         return this.afAuth.auth.signInWithEmailAndPassword(email, password);
     }
+
+    getCurrentUser() {
+        const user = this.afAuth.auth.currentUser;
+        return user;
+    }
 }
