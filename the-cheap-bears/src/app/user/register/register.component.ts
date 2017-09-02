@@ -28,9 +28,9 @@ export class RegisterComponent {
         });
     }
 
-    get username() { return this.registerForm.get('username'); }
-    get email() { return this.registerForm.get('email'); }
-    get password() { return this.registerForm.get('password'); }
+    get username(): any { return this.registerForm.get('username'); }
+    get email(): any { return this.registerForm.get('email'); }
+    get password(): any { return this.registerForm.get('password'); }
 
 
     // form submit
@@ -41,7 +41,7 @@ export class RegisterComponent {
             this.submitted = true;
             setTimeout(() => {
                 this.router.navigateByUrl('');
-            }, 3000);
+            }, 2000);
         })
         .catch((err) => {
             console.log(err.message);

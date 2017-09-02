@@ -12,10 +12,7 @@ export class TripsListingComponent implements OnInit {
   constructor(private _tripsService: TripsService) { }
 
   ngOnInit() {
-    this._tripsService.getAllTrips().subscribe(listing => {
-      console.log(listing);
-      this.allTripsListing = listing;
-    });
+    this.allTripsListing = this._tripsService.getAllTrips();
   }
 
 }

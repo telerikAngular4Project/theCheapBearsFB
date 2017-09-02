@@ -38,7 +38,10 @@ a:hover {
 }
 
 .main-wrapper {
-    margin-top: 20px;
+    background-image: url('./../../assets/images/paper-world-map-travel-wallpaper.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 main {

@@ -1,6 +1,6 @@
   <div class="row">
     <ul>
-      <section *ngFor="let trip of allTripsListing" class="content">
+      <section *ngFor="let trip of allTripsListing | async" class="content">
         <div class="col-md-8 col-md-offset-2">
           <div class="panel panel-default">
             <div class="panel-body">

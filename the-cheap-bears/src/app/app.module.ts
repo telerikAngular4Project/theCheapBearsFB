@@ -5,9 +5,10 @@ import { NgModule } from '@angular/core';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-import { firebaseConfig } from './../environments/firebase.config';
 import { AppRoutingModule } from './app-routing.module';
 import { UserModule } from './user/user.module';
+
+import { firebaseConfig } from './../environments/firebase.config';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './shared/header/header.component';
@@ -15,7 +16,7 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './shared/not-found/not-found.component';
 
-import {TripsModule} from './trips/trips.module';
+
 
 @NgModule({
   declarations: [
@@ -35,6 +36,6 @@ import {TripsModule} from './trips/trips.module';
     AppRoutingModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
