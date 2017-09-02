@@ -16,7 +16,7 @@ export class UserService {
     register(user: User ) {
        return this.afAuth.auth.createUserWithEmailAndPassword(user.email, user.password)
             .then((newUser) => {
-                this.db.list('/users/' + newUser.uid).push({usename: user.username, email: user.email });
+                this.users.set(newUser.uid).push({usename: user.username, email: user.email });
                 return newUser.updateProfile({displayName: user.username});
             });
     }
