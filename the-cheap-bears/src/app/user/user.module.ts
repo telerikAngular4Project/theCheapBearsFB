@@ -8,6 +8,7 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { UserService } from './../user/shared/user.service';
 import { ProfilePageComponent } from './../user/profile-page/profile-page.component';
+import { DatePickerModule } from 'ng2-datepicker';
 
 @NgModule({
     imports: [
@@ -15,6 +16,7 @@ import { ProfilePageComponent } from './../user/profile-page/profile-page.compon
         FormsModule,
         ReactiveFormsModule,
         UserRoutingModule,
+        DatePickerModule
     ],
     declarations: [
         RegisterComponent,

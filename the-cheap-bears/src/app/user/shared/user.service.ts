@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import * as firebase from 'firebase/app';
+import 'firebase/storage';
 import { User } from '../../models/user';
 
 @Injectable()
@@ -12,11 +13,13 @@ export class UserService {
         this.users = this.db.list('/users');
     }
 
-    register(user: User ) {
-       return this.afAuth.auth.createUserWithEmailAndPassword(user.email, user.password)
+    register(user: User) {
+        return this.afAuth.auth.createUserWithEmailAndPassword(user.email, user.password)
             .then((newUser) => {
-                this.db.object('/users/' + newUser.uid).set({username: user.username, email: user.email });
-                return newUser.updateProfile({displayName: user.username});
+                // tslint:disable-next-line
+                const defaultUrl = 'https://firebasestorage.googleapis.com/v0/b/thecheapbears-38177.appspot.com/o/images%2Fdefault-profile.png?alt=media&token=62b95b3d-f74b-455d-84f3-75ab7405f69a';
+                this.db.object('/users/' + newUser.uid).set({ username: user.username, email: user.email, profileImageUrl: defaultUrl });
+                return newUser.updateProfile({ displayName: user.username });
             });
     }
 
@@ -28,4 +31,19 @@ export class UserService {
         const user = this.afAuth.auth.currentUser;
         return user;
     }
+
+    uploadProfileImage(image, uid) {
+        const storageRef = firebase.storage().ref();
+        return storageRef.child(`images/ ${uid}`).put(image);
+    }
+
+    getImageUrl(uid) {
+        // console.log('url read');
+        // console.log(uid);
+        // const storage = firebase.storage();
+        // const storageRef = storage.ref();
+        // const imageRef = storageRef.child(`images/${uid}`);
+        // return imageRef.getDownloadURL();
+    }
+
 }

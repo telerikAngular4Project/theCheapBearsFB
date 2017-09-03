@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+import * as firebase from 'firebase/app';
+import 'firebase/storage';
+
 
 @Injectable()
 export class DataService {
@@ -24,5 +27,11 @@ export class DataService {
 
     queryByKey(collectionName, key) {
         return this.db.object(`/${collectionName}/${key}`);
+    }
+
+    uploadProfileImage(image, bucket, uid) {
+        const storageRef = firebase.storage().ref();
+        const userImageRef = storageRef.child(`images/ ${uid}`);
+        return userImageRef.put(image);
     }
 }

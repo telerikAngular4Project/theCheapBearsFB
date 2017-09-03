@@ -36,7 +36,7 @@ export class TripCreateComponent implements OnInit {
     ngOnInit() {
         this._tripService.getAllTowns()
             .subscribe((townsData) => {
-                this.towns = townsData.geonames.map((data) => data['toponymName']).sort();
+                this.towns = townsData.sort();
             });
     }
 

@@ -5,6 +5,7 @@ import { UserService } from './../shared/user.service';
 import { DataService } from './../../shared/services/data.service';
 import { AuthService } from './../../shared/services/auth.service';
 import * as firebase from 'firebase/app';
+import { User } from './../../models/user';
 
 @Component({
     selector: 'app-profile-page',
@@ -14,10 +15,15 @@ import * as firebase from 'firebase/app';
 export class ProfilePageComponent implements OnInit {
 
     namesForm: FormGroup;
-    users: any;
+    phoneNumberForm: FormGroup;
+    userInfoForm: FormGroup;
     user: any;
-    userId: any;
-    userData: any;
+    userId: string;
+    userData: User;
+    nameChanged: boolean;
+    phoneNumberChanged: boolean;
+    imageUploaded: boolean;
+    userInfoChanged: boolean;
 
     constructor(
         private fb: FormBuilder,
@@ -26,32 +32,101 @@ export class ProfilePageComponent implements OnInit {
         private router: Router,
         private authService: AuthService,
         private route: ActivatedRoute
-    ) {}
+    ) { }
+
+    public datePickerOptions = {
+        format: 'DD.MM.YYYY',
+        locale: 'bg',
+        minDate: new Date(),
+        maxDate: (() => {
+            const date = new Date();
+            date.setDate(date.getDate() + 50);
+            return date;
+        })(),
+    };
 
     ngOnInit() {
         this.createForms();
         this.userId = this.authService.getCurrentUserId();
+        this.user = this.dataService.queryByKey('users', this.userId);
         this.route.data.forEach((data) => this.userData = data.userData);
-        console.log(this.userData);
+        this.namesForm.setValue({
+            firstName: this.userData.firstname || '',
+            lastName: this.userData.lastname || '',
+        });
+        this.phoneNumberForm.setValue({
+            phoneNumber: this.userData.phonenumber || '',
+        });
+        this.userInfoForm.setValue({
+            userInfo: this.userData.description || '',
+        });
     }
+
 
     createForms() {
         this.namesForm = this.fb.group({
-            firstName: ['', [Validators.minLength(2)]],
-            lastName: ['', [Validators.minLength(2)]],
+            firstName: ['', [Validators.required]],
+            lastName: ['', [Validators.required]],
+        });
+        this.phoneNumberForm = this.fb.group({
+            phoneNumber: ['', [Validators.required]]
+        });
+        this.userInfoForm = this.fb.group({
+            userInfo: '',
         });
     }
 
     get firstName(): any { return this.namesForm.get('firstName'); }
     get lastName(): any { return this.namesForm.get('lastName'); }
+    get phoneNumber(): any { return this.phoneNumberForm.get('phoneNumber'); }
+    get userInfo(): any { return this.userInfoForm.get('userInfo'); }
 
     namesUpdateSubmit() {
         const namesData = this.namesForm.value;
-        console.log(namesData.firstName);
-        this.dataService.updateCollection('users', this.userId, {firstname: namesData.firstName, lastname: namesData.lastName })
+        this.dataService.updateCollection('users', this.userId, { firstname: namesData.firstName, lastname: namesData.lastName })
+            .then(() => {
+                this.nameChanged = true;
+                setTimeout(() => this.nameChanged = false, 2000);
+            });
+    }
+
+    phoneNumberSubmit() {
+        const phone = this.phoneNumberForm.value;
+        this.dataService.updateCollection('users', this.userId, { phonenumber: phone.phoneNumber })
+            .then(() => {
+                this.phoneNumberChanged = true;
+                setTimeout(() => this.phoneNumberChanged = false, 2000);
+            });
+    }
+
+    imageUploadSubmit(event) {
+        const image = event.srcElement.files[0];
+        console.log(image);
+        this.userService.uploadProfileImage(image, this.userId)
+            .then((snapshot) => {
+                console.log('image uploaded');
+                const url = snapshot.downloadURL;
+                console.log(url);
+                return this.dataService.updateCollection('users', this.userId, { profileImageUrl: url });
+            })
+            .then(() => {
+                console.log('url updated');
+                this.imageUploaded = true;
+                setTimeout(() => this.imageUploaded = false, 2000);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }
+
+    userInfoSubmit() {
+        const userInfoData = this.userInfoForm.value;
+        this.dataService.updateCollection('users', this.userId, { description: userInfoData.userInfo })
         .then(() => {
-            // popup message for succsess
+            this.userInfoChanged = true;
+            setTimeout(() => this.userInfoChanged = false, 2000);
         });
     }
 
 }
+
