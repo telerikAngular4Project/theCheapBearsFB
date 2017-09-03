@@ -12,4 +12,17 @@ export class DataService {
     getCollection(collectionName: string) {
         return this.collection = this.db.list(collectionName);
     }
+
+    updateCollection(collectionName: string, key: string, data: Object) {
+        this.collection = this.getCollection(collectionName);
+        return this.collection.update(key, data);
+    }
+
+    queryCollection(collectionName: string, queryParameter: Object) {
+       return this.db.list(collectionName, queryParameter);
+    }
+
+    queryByKey(collectionName, key) {
+        return this.db.object(`/${collectionName}/${key}`);
+    }
 }

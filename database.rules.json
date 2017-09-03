@@ -1,14 +1,18 @@
 {
- "rules":{
-   "users": {
-       "$uid":{
-           ".read":"auth != null && auth.uid === $uid",
-           ".write":"auth != null && auth.uid === $uid"
-       }
-   },
-   "comments":{
-        ".read": true,
-        ".write": true
-   }
-  }
+    "rules": {
+        "users": {
+            "$uid": {
+                ".read": "auth != null && auth.uid === $uid",
+                ".write": "auth != null && auth.uid === $uid"
+            }
+        },
+        "comments": {
+            ".read": true,
+            ".write": true
+        },
+        "trips": {
+            ".read": true,
+            ".write": true
+        }
+    }
 }

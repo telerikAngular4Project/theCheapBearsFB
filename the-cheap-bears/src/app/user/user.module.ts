@@ -1,3 +1,4 @@
+import { UserResolverService } from './shared/user-resolver.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -22,6 +23,7 @@ import { ProfilePageComponent } from './../user/profile-page/profile-page.compon
     ],
     providers: [
         UserService,
+        UserResolverService,
     ]
 })
 export class UserModule { }
