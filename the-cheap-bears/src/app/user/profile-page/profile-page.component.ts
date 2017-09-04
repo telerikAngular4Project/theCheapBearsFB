@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { UserService } from './../shared/user.service';
 import { DataService } from './../../shared/services/data.service';
 import { AuthService } from './../../shared/services/auth.service';
@@ -29,9 +29,8 @@ export class ProfilePageComponent implements OnInit {
         private fb: FormBuilder,
         private userService: UserService,
         private dataService: DataService,
-        private router: Router,
         private authService: AuthService,
-        private route: ActivatedRoute
+        private route: ActivatedRoute,
     ) { }
 
     public datePickerOptions = {
@@ -50,18 +49,19 @@ export class ProfilePageComponent implements OnInit {
         this.userId = this.authService.getCurrentUserId();
         this.user = this.dataService.queryByKey('users', this.userId);
         this.route.data.forEach((data) => this.userData = data.userData);
-        this.namesForm.setValue({
-            firstName: this.userData.firstname || '',
-            lastName: this.userData.lastname || '',
-        });
-        this.phoneNumberForm.setValue({
-            phoneNumber: this.userData.phonenumber || '',
-        });
+        this.namesForm
+            .setValue({
+                firstName: this.userData.firstname || '',
+                lastName: this.userData.lastname || '',
+            });
+        this.phoneNumberForm
+            .setValue({
+                phoneNumber: this.userData.phonenumber || '',
+            });
         this.userInfoForm.setValue({
             userInfo: this.userData.description || '',
         });
     }
-
 
     createForms() {
         this.namesForm = this.fb.group({
@@ -83,7 +83,10 @@ export class ProfilePageComponent implements OnInit {
 
     namesUpdateSubmit() {
         const namesData = this.namesForm.value;
-        this.dataService.updateCollection('users', this.userId, { firstname: namesData.firstName, lastname: namesData.lastName })
+        this.dataService.updateCollection(
+            'users',
+            this.userId,
+            { firstname: namesData.firstName, lastname: namesData.lastName })
             .then(() => {
                 this.nameChanged = true;
                 setTimeout(() => this.nameChanged = false, 2000);
@@ -101,16 +104,12 @@ export class ProfilePageComponent implements OnInit {
 
     imageUploadSubmit(event) {
         const image = event.srcElement.files[0];
-        console.log(image);
         this.userService.uploadProfileImage(image, this.userId)
             .then((snapshot) => {
-                console.log('image uploaded');
                 const url = snapshot.downloadURL;
-                console.log(url);
                 return this.dataService.updateCollection('users', this.userId, { profileImageUrl: url });
             })
             .then(() => {
-                console.log('url updated');
                 this.imageUploaded = true;
                 setTimeout(() => this.imageUploaded = false, 2000);
             })
@@ -122,10 +121,10 @@ export class ProfilePageComponent implements OnInit {
     userInfoSubmit() {
         const userInfoData = this.userInfoForm.value;
         this.dataService.updateCollection('users', this.userId, { description: userInfoData.userInfo })
-        .then(() => {
-            this.userInfoChanged = true;
-            setTimeout(() => this.userInfoChanged = false, 2000);
-        });
+            .then(() => {
+                this.userInfoChanged = true;
+                setTimeout(() => this.userInfoChanged = false, 2000);
+            });
     }
 
 }

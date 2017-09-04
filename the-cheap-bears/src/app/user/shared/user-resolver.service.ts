@@ -8,18 +8,18 @@ import { Router, Resolve, RouterStateSnapshot, ActivatedRouteSnapshot } from '@a
 
 import { AuthService } from './../../shared/services/auth.service';
 import { DataService } from './../../shared/services/data.service';
-import { User } from './../../models/user';
 
 @Injectable()
 export class UserResolverService implements Resolve<any> {
-    user: any;
-    constructor(private authService: AuthService, private dataService: DataService, private router: Router) { }
+    constructor(
+        private authService: AuthService,
+        private dataService: DataService,
+        private router: Router) { }
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> {
-       return this.authService.getCurrentUser().flatMap((user) => {
-            return this.dataService.queryByKey('users', user.uid);
-        }).map((x) => {
-            return x;
-        }).first();
+        return this.authService.getCurrentUser()
+        .flatMap((user) => this.dataService.queryByKey('users', user.uid))
+        .map((x) => x)
+        .first();
     }
 }

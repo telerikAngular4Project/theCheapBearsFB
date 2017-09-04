@@ -10,24 +10,28 @@ import { TripsRoutingModule } from './trips-routing.module';
 import { TripsListingComponent } from './trips-listing/trips-listing.component';
 import { TripCreateComponent } from './trip-create/trip-create.component';
 
-import {TripsService} from './services/trips.service';
+import { TripsService } from './services/trips.service';
+import { TripsListResolver } from './services/triplist-resolver.service';
 
 
 @NgModule({
-  imports: [
-    CommonModule,
-    HttpModule,
-    FormsModule,
-    ReactiveFormsModule,
-    TripsRoutingModule,
-    DatePickerModule,
-    TimepickerModule.forRoot(),
-  ],
-  declarations: [
-    TripsListingComponent,
-    TripCreateComponent
-  ],
-  providers: [TripsService]
+    imports: [
+        CommonModule,
+        HttpModule,
+        FormsModule,
+        ReactiveFormsModule,
+        TripsRoutingModule,
+        DatePickerModule,
+        TimepickerModule.forRoot(),
+    ],
+    declarations: [
+        TripsListingComponent,
+        TripCreateComponent
+    ],
+    providers: [
+        TripsService,
+        TripsListResolver
+    ]
 })
 
 export class TripsModule { }

@@ -9,7 +9,10 @@ import { User } from '../../models/user';
 export class UserService {
 
     users: FirebaseListObservable<any>;
-    constructor(private afAuth: AngularFireAuth, private db: AngularFireDatabase) {
+    constructor(
+        private afAuth: AngularFireAuth,
+        private db: AngularFireDatabase
+    ) {
         this.users = this.db.list('/users');
     }
 
@@ -24,7 +27,8 @@ export class UserService {
     }
 
     login(email: string, password: string) {
-        return this.afAuth.auth.signInWithEmailAndPassword(email, password);
+        return this.afAuth.auth
+            .signInWithEmailAndPassword(email, password);
     }
 
     getCurrentUser() {
@@ -36,14 +40,4 @@ export class UserService {
         const storageRef = firebase.storage().ref();
         return storageRef.child(`images/ ${uid}`).put(image);
     }
-
-    getImageUrl(uid) {
-        // console.log('url read');
-        // console.log(uid);
-        // const storage = firebase.storage();
-        // const storageRef = storage.ref();
-        // const imageRef = storageRef.child(`images/${uid}`);
-        // return imageRef.getDownloadURL();
-    }
-
 }

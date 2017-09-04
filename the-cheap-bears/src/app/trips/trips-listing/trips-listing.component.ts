@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+
 import { TripsService } from '../services/trips.service';
+import { Trip } from './../../models/trip';
 
 @Component({
   selector: 'app-trips-listing',
@@ -8,11 +11,16 @@ import { TripsService } from '../services/trips.service';
 })
 export class TripsListingComponent implements OnInit {
   allTripsListing: any;
+  tripsList: any;
 
-  constructor(private _tripsService: TripsService) { }
+  constructor(
+      private _tripsService: TripsService,
+      private route: ActivatedRoute,
+    ) { }
 
   ngOnInit() {
     this.allTripsListing = this._tripsService.getAllTrips();
+    this.route.data.forEach((data) => this.tripsList = data.tripsList);
   }
 
 }
