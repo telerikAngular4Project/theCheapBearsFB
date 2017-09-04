@@ -11,8 +11,25 @@ export class AuthService {
         this.user = _afAuth.authState;
     }
 
+    isLogged() {
+        return this.user;
+    }
+
     getCurrentUserId() {
-      return firebase.auth().currentUser.uid;
+        const curUser = firebase.auth().currentUser;
+        if (curUser) {
+            return curUser.uid;
+        }
+    }
+
+    getCurrentUser() {
+        return this.user;
+    }
+
+    getUserID() {
+        this.user.subscribe((user) => {
+            return user.uid;
+        });
     }
 
     logOut() {

@@ -1,6 +1,6 @@
   <div class="row">
     <ul>
-      <section *ngFor="let trip of allTripsListing | async" class="content">
+      <section *ngFor="let trip of tripsList" class="content">
         <div class="col-md-8 col-md-offset-2">
           <div class="panel panel-default">
             <div class="panel-body">
@@ -15,8 +15,9 @@
                           <span class="pull-right">{{trip.date}}</span>
                           </h3>
                           <p>Time: {{trip.departureTime.hours}} : {{trip.departureTime.minutes}} </p>
-                          <p>Free seats: {{trip.seats}}</p>
+                          <p>Free seats: {{trip.freeSeats}}</p>
                           <p>Price: {{trip.price}}</p>
+                          <img src={{trip.profileImageUrl}} alt="the profile image of the current user">
                           <p *ngIf="trip.additionalComment">Additional comments: {{trip.additionalComment}}</p>
                         </div>
                       </div>

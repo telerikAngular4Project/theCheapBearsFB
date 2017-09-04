@@ -1,1 +1,47 @@
-<app-profile-page></app-profile-page>
+<div class="container wrapper">
+    <div class="row">
+        <div class="col-sm-5 col-offset-3">
+            <h2>Profile:</h2>
+            <form [formGroup]="namesForm" (ngSubmit)="namesUpdateSubmit()" novalidate>
+                <div class="form-group">
+                    <label for="firstName">First name:</label>
+                    <input type="text" class="form-control" id="firstName" formControlName="firstName" placeholder="Set your firstname here.">
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Last name:</label>
+                    <input type="text" class="form-control" id="lastName" formControlName="lastName" placeholder="Set your lastname here.">
+                </div>
+                <button type="submit" class="btn btn-default" [disabled]="!firstName.valid || !lastName.valid || (firstName.pristine && lastName.pristine)">Change</button>
+            </form>
+            <div *ngIf="nameChanged">Your name was successfully changed.</div>
+
+            <form [formGroup]="phoneNumberForm" (ngSubmit)="phoneNumberSubmit()" novalidate>
+                <div class="form-group">
+                    <label for="phoneNumber">Phone number:</label>
+                    <input type="number" class="form-control" id="phoneNumber" formControlName="phoneNumber" placeholder="Set your phone number here.">
+                </div>
+                <button type="submit" class="btn btn-default" [disabled]="!phoneNumber.valid || phoneNumber.pristine">Change</button>
+            </form>
+            <div *ngIf="phoneNumberChanged">Your phone number was successfully changed.</div>
+            <label>Profile picture:</label>
+            <img [src]="(user | async)?.profileImageUrl || './../../../assets/images/default-profile.png'" alt="">
+
+            <div class="form-group">
+                <label class="btn btn-primary" for="image">
+                        <input (change) ="imageUploadSubmit($event)" id="image" type="file" accept="image/x-png,image/gif,image/jpeg"/>
+                        Upload Picture
+                    </label>
+            </div>
+            <div *ngIf="imageUploaded">Image successfully uploaded.</div>
+
+            <form [formGroup]="userInfoForm" (ngSubmit)="userInfoSubmit()" novalidate>
+                <div class="form-group">
+                    <label for="userInfo">User info:</label>
+                    <textarea type="number" class="form-control" id="userInfo" formControlName="userInfo" placeholder="Type few words about yourself."></textarea>
+                </div>
+                <button type="submit" class="btn btn-default" [disabled]="userInfo.pristine">Change</button>
+            </form>
+            <div *ngIf="userInfoChanged">Your info was updated.</div>
+        </div>
+    </div>
+</div>

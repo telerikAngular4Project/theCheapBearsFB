@@ -3,7 +3,7 @@
         <h2 class="text-center">Create new trip</h2>
         <form [formGroup]="tripForm" (ngSubmit)="submitTripData(tripForm.value)">
 
-            <div class="col-sm-8 input-wrapper">
+            <div class="col-sm-5 col-sm-offset-2 input-wrapper">
                 <div class="form-group">
                     <label>Departure city: </label>
                     <select formControlName="fromCity" class="form-control">
@@ -13,7 +13,7 @@
             </div>
 
 
-            <div class="col-sm-8 input-wrapper">
+            <div class="col-sm-5 col-sm-offset-2 input-wrapper">
                 <div class="form-group">
                     <label>Arrival city: </label>
                     <select formControlName="toCity" class="form-control">
@@ -23,14 +23,14 @@
             </div>
 
 
-            <div class="col-sm-8 input-wrapper">
+            <div class="col-sm-5 col-sm-offset-2 input-wrapper">
                 <div class="form-group">
                     <label for="date">Departure date: </label>
                     <ng2-datepicker id="date" [options]=datePickerOptions formControlName="date"></ng2-datepicker>
                 </div>
             </div>
 
-            <div class="col-sm-8 input-wrapper">
+            <div class="col-sm-5 col-sm-offset-2 input-wrapper">
                 <div class="form-group">
                     <label for="depTime">Departure time: </label>
                     <timepicker formControlName="departureTime" id="depTime" [showMeridian]="false"></timepicker>
@@ -41,7 +41,7 @@
             </div>
 
 
-            <div class="col-sm-8 input-wrapper">
+            <div class="col-sm-5 col-sm-offset-2 input-wrapper">
                 <div class="form-group">
                     <label for="price">Price: </label>
                     <input type="number" class="form-control" id="price" formControlName="price">
@@ -53,7 +53,7 @@
 
 
 
-            <div class="col-sm-8 input-wrapper">
+            <div class="col-sm-5 col-sm-offset-2 input-wrapper">
                 <div class="form-group">
                     <label for="seats">Seats: </label>
                     <input type="number" class="form-control" id="seats" formControlName="seats">
@@ -64,7 +64,7 @@
                 </div>
 
 
-            <div class="col-sm-8 input-wrapper">
+            <div class="col-sm-5 col-sm-offset-2 input-wrapper">
                 <div class="form-group">
                     <label for="luggage">Luggage size:</label>
                     <select formControlName="luggage" class="form-control" id="luggage">
@@ -75,14 +75,14 @@
                 </div>
             </div>
 
-            <div class="col-sm-8 input-wrapper">
+            <div class="col-sm-5 col-sm-offset-2 input-wrapper">
                 <div class="form-group">
                     <label for="additionalComment">Additional comment: </label>
                     <textarea class="form-control" id="additionalComment" formControlName="additionalComment"></textarea>
                 </div>
             </div>
 
-            <div class="col-sm-8 input-wrapper">
+            <div class="col-sm-5 col-sm-offset-2 input-wrapper">
                 <input type="submit" class="btn btn-success submit" value="Create trip" [disabled]="!tripForm.valid">
             </div>
         </form>

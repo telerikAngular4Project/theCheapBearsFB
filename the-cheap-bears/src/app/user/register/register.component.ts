@@ -10,15 +10,20 @@ import { usernameRegEx, passwordRegEx } from './../../helpers/patterns';
     styleUrls: ['./register.component.css']
 })
 
-export class RegisterComponent {
+export class RegisterComponent  implements OnInit {
 
     public registerForm: FormGroup;
 
+    submitted: boolean;
+
     constructor(private fb: FormBuilder, private userService: UserService, private router: Router) {
+    }
+
+    ngOnInit() {
+        this.submitted = false;
         this.createForm();
     }
 
-    submitted = false;
 
     createForm() {
         this.registerForm = this.fb.group({

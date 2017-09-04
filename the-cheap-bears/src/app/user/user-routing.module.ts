@@ -1,3 +1,4 @@
+import { UserResolverService } from './shared/user-resolver.service';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -5,10 +6,13 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
 
+import { AuthGuard } from './../shared/guards/auth.guard';
+import { LoggedGuard } from './../shared/guards/logged.guard';
+
 const userRoutes: Routes = [
-    { path: 'register', component: RegisterComponent },
-    { path: 'login', component: LoginComponent },
-    { path: 'profile', component: ProfilePageComponent },
+    { path: 'register', component: RegisterComponent, canActivate: [ LoggedGuard ] },
+    { path: 'login', component: LoginComponent, canActivate: [ LoggedGuard ] },
+    { path: 'profile', component: ProfilePageComponent, canActivate: [ AuthGuard ], resolve: { userData: UserResolverService }  },
 ];
 
 @NgModule({

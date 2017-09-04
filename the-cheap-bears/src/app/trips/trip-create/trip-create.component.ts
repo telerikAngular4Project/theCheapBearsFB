@@ -29,15 +29,15 @@ export class TripCreateComponent implements OnInit {
         })(),
     };
 
-    constructor(private _router: Router, private _tripService: TripsService, private _fb: FormBuilder) {
-        this.createForm();
-    }
+    constructor(
+        private _router: Router,
+        private _tripService: TripsService,
+        private _fb: FormBuilder) {}
 
     ngOnInit() {
+        this.createForm();
         this._tripService.getAllTowns()
-            .subscribe((townsData) => {
-                this.towns = townsData.geonames.map((data) => data['toponymName']).sort();
-            });
+            .subscribe((townsData) => this.towns = townsData.sort());
     }
 
     createForm() {

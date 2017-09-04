@@ -1,3 +1,4 @@
+import { UserResolverService } from './shared/user-resolver.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -7,6 +8,7 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { UserService } from './../user/shared/user.service';
 import { ProfilePageComponent } from './../user/profile-page/profile-page.component';
+import { DatePickerModule } from 'ng2-datepicker';
 
 @NgModule({
     imports: [
@@ -14,6 +16,7 @@ import { ProfilePageComponent } from './../user/profile-page/profile-page.compon
         FormsModule,
         ReactiveFormsModule,
         UserRoutingModule,
+        DatePickerModule
     ],
     declarations: [
         RegisterComponent,
@@ -22,6 +25,7 @@ import { ProfilePageComponent } from './../user/profile-page/profile-page.compon
     ],
     providers: [
         UserService,
+        UserResolverService,
     ]
 })
 export class UserModule { }

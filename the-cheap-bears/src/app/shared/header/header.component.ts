@@ -8,7 +8,6 @@ import { AuthService } from './../services/auth.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-    hidden: boolean;
   constructor(public authService: AuthService, private router: Router) { }
 
   ngOnInit() {
