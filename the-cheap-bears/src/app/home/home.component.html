@@ -21,7 +21,7 @@
 <div class="container-fluid some-content">
     <div class="container">
         <div class="row">
-            <div *ngFor="let trip of trips | async" class="col-sm-4">
+            <div *ngFor="let trip of trips" class="col-sm-4">
                 <p>Date of departure: {{trip.date}}</p>
                 <p>Time of departure: {{trip.departureTime.hours}}:{{trip.departureTime.minutes}}</p>
                 <p>From: {{trip.fromCity}}</p>

@@ -1,5 +1,5 @@
 export class Trip {
-    id?: string;
+    id: number;
     fromCity: string;
     toCity: string;
     price: number;
@@ -7,7 +7,7 @@ export class Trip {
     departureTime: object;
     freeSeats: number;
     additionalComment: string;
-    createdOn: Date;
+    createdOn: string;
     userId: string;
     baggage: number;
     author: string;

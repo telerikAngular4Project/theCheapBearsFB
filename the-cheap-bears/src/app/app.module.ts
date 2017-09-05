@@ -36,6 +36,6 @@ import { PageNotFoundComponent } from './shared/not-found/not-found.component';
     AppRoutingModule
   ],
   providers: [],
-  bootstrap: [AppComponent],
+  bootstrap: [ AppComponent ],
 })
 export class AppModule { }

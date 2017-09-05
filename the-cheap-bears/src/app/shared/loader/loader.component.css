@@ -1,17 +1,6 @@
-@import url('https://fonts.googleapis.com/css?family=Ubuntu');
-body {
-  min-height: 100%;
-  font-family: 'Ubuntu', sans-serif;
-  position: relative;
-}
-
-html {
-  height: 100%;
-}
-
 .loader-wrapper {
     position: absolute;
-    top: 50%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
   }
