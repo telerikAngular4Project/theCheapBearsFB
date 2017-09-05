@@ -1,3 +1,4 @@
+import { SharedModule } from './../shared/shared.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpModule } from '@angular/http';
@@ -9,10 +10,10 @@ import { TripsRoutingModule } from './trips-routing.module';
 
 import { TripsListingComponent } from './trips-listing/trips-listing.component';
 import { TripCreateComponent } from './trip-create/trip-create.component';
+import { TripItemComponent } from './trip-item/trip-item.component';
 
 import { TripsService } from './services/trips.service';
-import { TripsListResolver } from './services/triplist-resolver.service';
-
+import { TripDetailsComponent } from './trip-details/trip-details.component';
 
 @NgModule({
     imports: [
@@ -20,17 +21,19 @@ import { TripsListResolver } from './services/triplist-resolver.service';
         HttpModule,
         FormsModule,
         ReactiveFormsModule,
+        SharedModule,
         TripsRoutingModule,
         DatePickerModule,
         TimepickerModule.forRoot(),
     ],
     declarations: [
         TripsListingComponent,
-        TripCreateComponent
+        TripCreateComponent,
+        TripItemComponent,
+        TripDetailsComponent,
     ],
     providers: [
         TripsService,
-        TripsListResolver
     ]
 })
 

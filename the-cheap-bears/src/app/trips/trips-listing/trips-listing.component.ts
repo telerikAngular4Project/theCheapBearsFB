@@ -1,7 +1,7 @@
+import { DataService } from './../../shared/services/data.service';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { TripsService } from '../services/trips.service';
 import { Trip } from './../../models/trip';
 
 @Component({
@@ -10,17 +10,19 @@ import { Trip } from './../../models/trip';
   styleUrls: ['./trips-listing.component.css']
 })
 export class TripsListingComponent implements OnInit {
-  allTripsListing: any;
+
   tripsList: any;
+  show: boolean;
 
   constructor(
-      private _tripsService: TripsService,
       private route: ActivatedRoute,
+      private dataService: DataService,
     ) { }
 
   ngOnInit() {
-    this.allTripsListing = this._tripsService.getAllTrips();
-    this.route.data.forEach((data) => this.tripsList = data.tripsList);
+     this.dataService.getCollection('trips').subscribe((data) => {
+        this.show = true;
+        this.tripsList = data;
+    });
   }
-
 }

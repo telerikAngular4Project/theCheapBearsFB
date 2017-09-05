@@ -4,16 +4,16 @@ import 'rxjs/add/operator/map';
 import { Injectable } from '@angular/core';
 import { Router, Resolve, RouterStateSnapshot, ActivatedRouteSnapshot } from '@angular/router';
 
-import { TripsService } from './trips.service';
+import { DataService } from './../services/data.service';
 
 @Injectable()
-export class TripsListResolver implements Resolve<any> {
+export class TripsResolver implements Resolve<any> {
     constructor(
         private router: Router,
-        private tripsService: TripsService) { }
+        private dataService: DataService) { }
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> {
-        return this.tripsService.getAllTrips()
+        return this.dataService.getCollection('trips')
         .map((x) => x)
         .first();
     }

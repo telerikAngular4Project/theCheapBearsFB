@@ -1,0 +1,7 @@
+<a [routerLink]="['/trips/details']" [queryParams]="{id:trip.id}">
+     author: {{trip.author}}
+    from: {{trip.fromCity}}
+    to: {{trip.toCity}}
+    created: {{trip.date}}
+    departure: {{trip.departureTime.hours}}h {{trip.departureTime.minutes}}min
+</a>

@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+
 import { UserService } from './../shared/user.service';
 import { DataService } from './../../shared/services/data.service';
 import { AuthService } from './../../shared/services/auth.service';
+
 import * as firebase from 'firebase/app';
+
 import { User } from './../../models/user';
 
 @Component({

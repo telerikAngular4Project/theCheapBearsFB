@@ -1,15 +1,16 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { TripsListingComponent } from './trips-listing/trips-listing.component';
 import { TripCreateComponent } from './trip-create/trip-create.component';
+import { TripsListingComponent } from './trips-listing/trips-listing.component';
+import { TripDetailsComponent } from './trip-details/trip-details.component';
 
 import { AuthGuard } from './../shared/guards/auth.guard';
-import { TripsListResolver } from './services/triplist-resolver.service';
 
 const tripsRoutes: Routes = [
-    { path: '', component: TripsListingComponent, resolve: { tripsList: TripsListResolver } },
-    { path: 'create', component: TripCreateComponent, canActivate: [AuthGuard] }
+    { path: '', component: TripsListingComponent },
+    { path: 'create', component: TripCreateComponent, canActivate: [AuthGuard] },
+    { path: 'details', component: TripDetailsComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({

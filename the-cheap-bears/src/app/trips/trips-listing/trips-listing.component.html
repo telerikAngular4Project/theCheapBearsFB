@@ -1,36 +1,10 @@
-  <div class="row">
-    <ul>
-      <section *ngFor="let trip of tripsList" class="content">
-        <div class="col-md-8 col-md-offset-2">
-          <div class="panel panel-default">
-            <div class="panel-body">
-              <div class="table-container">
-                <table class="table table-filter">
-                  <tbody>
-                  <tr>
-                    <td>
-                      <div class="media">
-                        <div class="media-body">
-                          <h3 class="title">{{trip.fromCity}} - {{trip.toCity}}
-                          <span class="pull-right">{{trip.date}}</span>
-                          </h3>
-                          <p>Time: {{trip.departureTime.hours}} : {{trip.departureTime.minutes}} </p>
-                          <p>Free seats: {{trip.freeSeats}}</p>
-                          <p>Price: {{trip.price}}</p>
-                          <img src={{trip.profileImageUrl}} alt="the profile image of the current user">
-                          <p *ngIf="trip.additionalComment">Additional comments: {{trip.additionalComment}}</p>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                  </tbody>
-                </table>
-              </div>
+<div class="wrapper">
+    <div *ngIf="show" class="container">
+        <div class="row">
+            <div class="col-sm-6" *ngFor="let trip of tripsList">
+                <app-trip-item [trip]="trip"></app-trip-item>
             </div>
-          </div>
         </div>
-      </section>
-    </ul>
-
-
-  </div>
+    </div>
+    <app-loader *ngIf="!show"></app-loader>
+</div>
