@@ -16,5 +16,6 @@ export class HomeComponent implements OnInit {
 
     ngOnInit() {
         this.route.data.forEach((data) => this.trips = data.tripsData);
+        this.trips.sort((a, b) => (a.createdOn < b.createdOn) ? 1 : ((a.createdOn > b.createdOn) ? -1 : 0));
     }
 }

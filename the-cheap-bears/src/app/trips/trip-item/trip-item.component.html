@@ -1,5 +1,5 @@
 <div *ngIf="show">
-    <a [routerLink]="['/trips/details']" [queryParams]="{id:trip.id}">
+    <a [routerLink]="['/trips/details']" [queryParams]="{id:trip.$key}">
         <div class="profile">
             <div class="profile-img">
                 <img [src]="user.profileImageUrl" alt="Current user's profile picture.">
