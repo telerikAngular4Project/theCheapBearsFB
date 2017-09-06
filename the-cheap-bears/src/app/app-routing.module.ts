@@ -12,9 +12,15 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(appRoutes, { preloadingStrategy: PreloadAllModules }) ],
-    exports: [RouterModule],
-    providers: [ TripsResolver ]
+    imports: [
+        RouterModule.forRoot(appRoutes, { preloadingStrategy: PreloadAllModules }),
+    ],
+    exports: [
+        RouterModule,
+    ],
+    providers: [
+        TripsResolver,
+    ]
 })
 
 export class AppRoutingModule { }

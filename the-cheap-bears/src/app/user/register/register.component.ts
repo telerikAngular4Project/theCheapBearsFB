@@ -10,7 +10,7 @@ import { usernameRegEx, passwordRegEx } from './../../helpers/patterns';
     styleUrls: ['./register.component.css']
 })
 
-export class RegisterComponent  implements OnInit {
+export class RegisterComponent implements OnInit {
 
     public registerForm: FormGroup;
 
@@ -42,15 +42,15 @@ export class RegisterComponent  implements OnInit {
     onSubmit() {
         const userData = this.registerForm.value;
         this.userService.register(userData)
-        .then(() => {
-            this.submitted = true;
-            setTimeout(() => {
-                this.router.navigateByUrl('');
-            }, 2000);
-        })
-        .catch((err) => {
-            console.log(err.message);
-            // do something with errors(this is serverside validation)
-        });
+            .then(() => {
+                this.submitted = true;
+                setTimeout(() => {
+                    this.router.navigateByUrl('');
+                }, 2000);
+            })
+            .catch((err) => {
+                console.log(err.message);
+                // do something with errors(this is serverside validation)
+            });
     }
 }
