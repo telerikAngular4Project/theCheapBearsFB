@@ -1,4 +1,3 @@
-import { SharedModule } from './../shared/shared.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpModule } from '@angular/http';
@@ -7,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DatePickerModule } from 'ng2-datepicker';
 import { TimepickerModule } from 'ngx-bootstrap/timepicker';
 import { TripsRoutingModule } from './trips-routing.module';
+import { SharedModule } from './../shared/shared.module';
 
 import { TripsListingComponent } from './trips-listing/trips-listing.component';
 import { TripCreateComponent } from './trip-create/trip-create.component';
@@ -34,6 +34,9 @@ import { TripDetailsComponent } from './trip-details/trip-details.component';
     ],
     providers: [
         TripsService,
+    ],
+    exports: [
+        TripItemComponent,
     ]
 })
 

@@ -1,7 +1,18 @@
-<a [routerLink]="['/trips/details']" [queryParams]="{id:trip.id}">
-     author: {{trip.author}}
-    from: {{trip.fromCity}}
-    to: {{trip.toCity}}
-    created: {{trip.date}}
-    departure: {{trip.departureTime.hours}}h {{trip.departureTime.minutes}}min
-</a>
+<div *ngIf="show">
+    <a [routerLink]="['/trips/details']" [queryParams]="{id:trip.id}">
+        <div class="profile">
+            <div class="profile-img">
+                <img [src]="user.profileImageUrl" alt="Current user's profile picture.">
+            </div>
+            <p>{{trip.author}}</p>
+        </div>
+        <div class="directions">
+            <p>Departure: {{trip.date}}</p>
+            <p>From: {{trip.fromCity}} To: {{trip.toCity}}</p>
+            <p class="price">Price: {{trip.price}} lv.</p>
+        </div>
+    </a>
+</div>
+<div *ngIf="!show" class="loader-wrap">
+    <app-loader></app-loader>
+</div>

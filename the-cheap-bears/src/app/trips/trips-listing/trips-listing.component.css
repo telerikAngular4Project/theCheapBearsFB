@@ -1,4 +1,10 @@
-/* .wrapper {
-    min-height: 1000px;
+.wrapper {
+    margin-top: 30px;
+    min-height: 1200px;
+    
 }
- */
+
+:host ::ng-deep > app-loader > .loader-wrapper{
+    top: 40%;
+}
+

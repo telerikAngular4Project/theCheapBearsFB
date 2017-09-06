@@ -9,11 +9,14 @@ import { User } from '../../models/user';
 export class UserService {
 
     users: FirebaseListObservable<any>;
+    trips: FirebaseListObservable<any>;
+
     constructor(
         private afAuth: AngularFireAuth,
         private db: AngularFireDatabase
     ) {
         this.users = this.db.list('/users');
+        this.trips = this.db.list('/trips');
     }
 
     register(user: User) {

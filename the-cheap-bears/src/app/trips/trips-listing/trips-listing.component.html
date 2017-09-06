@@ -1,10 +1,8 @@
-<div class="wrapper">
-    <div *ngIf="show" class="container">
-        <div class="row">
-            <div class="col-sm-6" *ngFor="let trip of tripsList">
-                <app-trip-item [trip]="trip"></app-trip-item>
-            </div>
+<div *ngIf="show" class="container wrapper">
+    <div class="row">
+        <div class="col-sm-6" *ngFor="let trip of tripsList">
+            <app-trip-item [trip]="trip"></app-trip-item>
         </div>
     </div>
-    <app-loader *ngIf="!show"></app-loader>
 </div>
+<app-loader *ngIf="!show"></app-loader>

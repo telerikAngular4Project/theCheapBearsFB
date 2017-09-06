@@ -23,6 +23,8 @@ export class ProfilePageComponent implements OnInit {
     user: any;
     userId: string;
     userData: User;
+    url: string;
+    tripsList: any;
     nameChanged: boolean;
     phoneNumberChanged: boolean;
     imageUploaded: boolean;
@@ -109,8 +111,8 @@ export class ProfilePageComponent implements OnInit {
         const image = event.srcElement.files[0];
         this.userService.uploadProfileImage(image, this.userId)
             .then((snapshot) => {
-                const url = snapshot.downloadURL;
-                return this.dataService.updateCollection('users', this.userId, { profileImageUrl: url });
+                this.url = snapshot.downloadURL;
+                return this.dataService.updateCollection('users', this.userId, { profileImageUrl: this.url });
             })
             .then(() => {
                 this.imageUploaded = true;
