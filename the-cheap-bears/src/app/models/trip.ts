@@ -10,7 +10,4 @@ export class Trip {
     createdOn: string;
     userId: string;
     baggage: number;
-    author: string;
-    phonenumber?: number|string;
-    profileImageUrl?: string;
 }

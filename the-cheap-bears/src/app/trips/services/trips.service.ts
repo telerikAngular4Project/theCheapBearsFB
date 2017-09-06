@@ -33,12 +33,6 @@ export class TripsService {
         return this.tripsCollectionFb;
     }
 
-    generateId() {
-        const min = Math.ceil(1);
-        const max = Math.floor(999999);
-        return Date.now() + Math.floor(Math.random() * (max - min)) + min;
-    }
-
     getCurrentDate() {
         const today: Date = new Date();
         let dd: number|string = today.getDate();
@@ -67,15 +61,7 @@ export class TripsService {
         this.trip.freeSeats = tripData.seats;
         this.trip.additionalComment = tripData.additionalComment;
         this.trip.createdOn = this.getCurrentDate();
-        console.log(this.trip.createdOn);
-        this.trip.id = this.generateId();
         this.trip.userId = userId;
-
-        return this.dataService.queryByKey('users', userId).subscribe((userData) => {
-            this.trip.author = userData.username;
-            this.trip.phonenumber = userData.phonenumber || 'No phone number provided!';
-            this.trip.profileImageUrl = userData.profileImageUrl || './../../../assets/images/default-profile.png';
-            return this.tripsCollectionFb.push(this.trip);
-        });
+        return this.tripsCollectionFb.push(this.trip);
     }
 }

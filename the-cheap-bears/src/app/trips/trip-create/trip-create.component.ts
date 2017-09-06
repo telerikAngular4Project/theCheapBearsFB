@@ -58,8 +58,9 @@ export class TripCreateComponent implements OnInit {
     get seats(): any { return this.tripForm.get('seats'); }
 
     submitTripData(tripData) {
-        this._tripService.createNewTrip(tripData);
-        this._router.navigateByUrl('/trips');
+        this._tripService.createNewTrip(tripData).then(() => {
+            this._router.navigateByUrl('/trips');
+        });
     }
 }
 

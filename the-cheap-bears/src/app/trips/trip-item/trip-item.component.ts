@@ -25,7 +25,7 @@ export class TripItemComponent implements OnInit {
     @Input() trip: Trip;
 
     ngOnInit() {
-        this.userId =this.trip.userId;
+        this.userId = this.trip.userId;
         this.dataService.queryByKey('users', this.userId).
             subscribe((data) => {
                 this.user = data;
