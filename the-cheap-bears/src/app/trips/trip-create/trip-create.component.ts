@@ -53,9 +53,17 @@ export class TripCreateComponent implements OnInit {
         });
     }
 
-    get departureTime(): any { return this.tripForm.get('departureTime'); }
-    get price(): any { return this.tripForm.get('price'); }
-    get seats(): any { return this.tripForm.get('seats'); }
+    get departureTime(): any {
+      return this.tripForm.get('departureTime');
+    }
+
+    get price(): any {
+      return this.tripForm.get('price');
+    }
+
+    get seats(): any {
+      return this.tripForm.get('seats');
+    }
 
     submitTripData(tripData) {
         this._tripService.createNewTrip(tripData).then(() => {
