@@ -1,7 +1,15 @@
 .wrapper {
     margin-top: 30px;
     min-height: 1200px;
-    
+}
+
+label {
+  font-size: 110%;
+}
+
+.searchBar {
+  background-color: darkgrey;
+  padding-bottom: 5%;
 }
 
 :host ::ng-deep > app-loader > .loader-wrapper{
