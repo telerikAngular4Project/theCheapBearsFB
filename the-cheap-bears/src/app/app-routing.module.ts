@@ -6,7 +6,6 @@ import { PageNotFoundComponent } from './shared/not-found/not-found.component';
 import { TripsResolver } from './shared/resolvers/trips-resolver.service';
 
 const appRoutes: Routes = [
-    { path: '', component: HomeComponent, resolve: { tripsData: TripsResolver } },
     { path: 'trips', loadChildren: './trips/trips.module#TripsModule' },
     { path: '**', component: PageNotFoundComponent },
 ];

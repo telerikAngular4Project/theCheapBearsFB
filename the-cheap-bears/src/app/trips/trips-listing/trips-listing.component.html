@@ -1,36 +1,38 @@
 <div class="container wrapper">
-  <div class="container-fluid searchBar">
-    <h2 class="text-center">Trips filter by:</h2>
-    <form>
-      <label>Departure city:</label>
-      <input type="text" #fromCityF (input)="q"/>
-
-      <label>Arrival city:</label>
-      <input type="text" #toCityF (input)="q"/>
-
-      <label>Date:</label>
-      <input type="text" #depDateF (input)="q"/>
-
-      <label>Price less than:</label>
-      <input type="text" #priceF (input)="q"/>
-    </form>
-  </div>
-
-  <div *ngIf="show">
     <div class="row">
-      <div class="col-sm-6" *ngFor="let trip of tripsList |
+        <h2 class="text-center">Find your trip:</h2>
+        <form>
+            <div class="form-group col-sm-6">
+                <label for="departure">Departure city:</label>
+                <input type="text" #fromCityF (input)="q" class="form-control" id="departure"/>
+            </div>
+            <div class="form-group col-sm-6">
+                <label for="arrival">Arrival city:</label>
+                <input type="text" #toCityF (input)="q" class="form-control" id="arrival"/>
+            </div>
+            <div class="form-group col-sm-6">
+                <label for="date">Date:</label>
+                <input type="text" #depDateF (input)="q" class="form-control" id="date"/>
+            </div>
+            <div class="form-group col-sm-6">
+                <label for="price">Price less than:</label>
+                <input type="text" #priceF (input)="q" class="form-control" id="price"/>
+            </div>
+        </form>
+    </div>
+
+    <div *ngIf="show" class="list-wrapper">
+        <div class="row">
+            <div class="col-sm-6" *ngFor="let trip of tripsList |
       filterTrips:{
         fromCityF:fromCityF.value,
          toCityF:toCityF.value,
          depDateF: depDateF.value,
          priceF:priceF.value}">
-        <app-trip-item [trip]="trip"></app-trip-item>
-      </div>
+                <app-trip-item [trip]="trip"></app-trip-item>
+            </div>
+        </div>
     </div>
-  </div>
-  <app-loader *ngIf="!show"></app-loader>
+    <app-loader *ngIf="!show"></app-loader>
 </div>
-
-
-
-
+<div class="separator"></div>

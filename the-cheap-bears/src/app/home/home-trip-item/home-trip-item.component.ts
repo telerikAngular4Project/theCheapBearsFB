@@ -5,12 +5,11 @@ import { DataService } from './../../shared/services/data.service';
 import { Trip } from './../../models/trip';
 
 @Component({
-    selector: 'app-trip-item',
-    templateUrl: './trip-item.component.html',
-    styleUrls: ['./trip-item.component.css']
+    selector: 'app-home-trip-item',
+    templateUrl: './home-trip-item.component.html',
+    styleUrls: ['./home-trip-item.component.css']
 })
-
-export class TripItemComponent implements OnInit {
+export class HomeTripItemComponent implements OnInit {
 
     user: any;
     userId: string;
@@ -33,4 +32,5 @@ export class TripItemComponent implements OnInit {
                 this.show = true;
             });
     }
+
 }

@@ -3,16 +3,26 @@
     min-height: 1200px;
 }
 
+.wrapper h2 {
+    margin-bottom: 30px;
+}
+
+.list-wrapper {
+    margin-top: 50px;
+}
+
 label {
   font-size: 110%;
 }
 
-.searchBar {
-  background-color: darkgrey;
-  padding-bottom: 5%;
+.search-bar {
+  background-color: #F3F4F5;
 }
 
 :host ::ng-deep > app-loader > .loader-wrapper{
     top: 40%;
 }
 
+.separator {
+    height: 200px;
+}

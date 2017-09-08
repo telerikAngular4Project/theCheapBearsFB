@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
+import { DataService } from './../shared/services/data.service';
+
 @Component({
     selector: 'app-home',
     templateUrl: './home.component.html',
@@ -8,14 +10,21 @@ import { ActivatedRoute } from '@angular/router';
 })
 
 export class HomeComponent implements OnInit {
-
-    trips: any;
+    tripsList: any;
+    show = false;
     constructor(
         private route: ActivatedRoute,
+        private dataService: DataService,
     ) { }
 
     ngOnInit() {
-        this.route.data.forEach((data) => this.trips = data.tripsData);
-        this.trips.sort((a, b) => (a.createdOn < b.createdOn) ? 1 : ((a.createdOn > b.createdOn) ? -1 : 0));
+        this.dataService.getCollection('trips')
+            .subscribe((data) => {
+                this.tripsList = data;
+                this.tripsList = this.tripsList
+                    .sort((a, b) => (a.createdOn < b.createdOn) ? 1 : ((a.createdOn > b.createdOn) ? -1 : 0))
+                    .slice(0, 10);
+                    this.show = false;
+            });
     }
 }

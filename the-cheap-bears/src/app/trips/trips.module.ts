@@ -8,12 +8,12 @@ import { TimepickerModule } from 'ngx-bootstrap/timepicker';
 import { TripsRoutingModule } from './trips-routing.module';
 import { SharedModule } from './../shared/shared.module';
 
-import { TripsListingComponent } from './trips-listing/trips-listing.component';
 import { TripCreateComponent } from './trip-create/trip-create.component';
+import { TripsListingComponent } from './trips-listing/trips-listing.component';
 import { TripItemComponent } from './trip-item/trip-item.component';
+import { TripDetailsComponent } from './trip-details/trip-details.component';
 
 import { TripsService } from './services/trips.service';
-import { TripDetailsComponent } from './trip-details/trip-details.component';
 import { FilterTripsPipe } from './pipes/filter-trips.pipe';
 
 @NgModule({
