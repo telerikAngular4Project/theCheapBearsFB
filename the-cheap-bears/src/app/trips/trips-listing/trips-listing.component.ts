@@ -13,6 +13,7 @@ export class TripsListingComponent implements OnInit {
 
     tripsList: any;
     show: boolean;
+    q = 'q';
 
     constructor(
         private dataService: DataService,
