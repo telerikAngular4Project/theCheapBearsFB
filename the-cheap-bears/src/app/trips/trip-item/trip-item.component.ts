@@ -1,5 +1,6 @@
 import { AuthService } from './../../shared/services/auth.service';
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { DataService } from './../../shared/services/data.service';
 
@@ -20,6 +21,7 @@ export class TripItemComponent implements OnInit {
     constructor(
         private dataService: DataService,
         private authService: AuthService,
+        private router: Router,
     ) { }
 
     @Input() trip: Trip;

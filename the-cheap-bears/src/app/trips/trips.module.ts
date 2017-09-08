@@ -14,6 +14,7 @@ import { TripItemComponent } from './trip-item/trip-item.component';
 
 import { TripsService } from './services/trips.service';
 import { TripDetailsComponent } from './trip-details/trip-details.component';
+import { MyTripsComponent } from './my-trips/my-trips.component';
 
 @NgModule({
     imports: [
@@ -31,6 +32,7 @@ import { TripDetailsComponent } from './trip-details/trip-details.component';
         TripCreateComponent,
         TripItemComponent,
         TripDetailsComponent,
+        MyTripsComponent,
     ],
     providers: [
         TripsService,

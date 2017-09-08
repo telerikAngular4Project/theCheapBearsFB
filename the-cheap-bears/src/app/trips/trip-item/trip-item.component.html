@@ -10,8 +10,12 @@
             <p>Departure: {{trip.date}}</p>
             <p>From: {{trip.fromCity}} To: {{trip.toCity}}</p>
             <p class="price">Price: {{trip.price}} lv.</p>
-        </div>
-    </a>
+        </div> 
+        <div *ngIf="router.url === '/trips/mine'">
+            <button>Edit</button>
+            <button>Delete</button>
+        </div>       
+    </a>    
 </div>
 <div *ngIf="!show" class="loader-wrap">
     <app-loader></app-loader>
