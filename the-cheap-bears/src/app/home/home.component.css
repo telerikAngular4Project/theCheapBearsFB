@@ -42,10 +42,8 @@ a:hover {
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
-}
-
-main {
-    margin-top: 20px;
+    display: flex;
+    align-items: center;
     min-height: 300px;
 }
 
@@ -76,10 +74,32 @@ main {
 }
 
 .some-content {
-    background-color: #eee;
+    background-color: #fafbfc;
     min-height: 500px;
 }
 
 .separator {
     height: 200px;
 }
+
+.trips-header {
+    background-color: #fafbfc;
+    border-top: 1px solid #fff;
+    box-shadow: 
+    inset 0px 11px 5px -10px #C3C3C3,
+    inset 0px -11px 5px -10px #fafbfc;
+    text-transform: uppercase;
+    height: 80px;
+}
+
+.trips-header h1 {
+    margin: 0;
+    line-height: 80px;
+    font-size: 20px;
+}
+
+.trips-info-wrapper {
+    margin-bottom: 100px;
+}
+
+
