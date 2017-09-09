@@ -10,6 +10,7 @@ import { UserService } from './../user/shared/user.service';
 import { UserResolverService } from './shared/user-resolver.service';
 import { ProfilePageComponent } from './../user/profile-page/profile-page.component';
 import { DatePickerModule } from 'ng2-datepicker';
+import { UserCarComponent } from './user-car/user-car.component';
 
 @NgModule({
     imports: [
@@ -24,6 +25,7 @@ import { DatePickerModule } from 'ng2-datepicker';
         RegisterComponent,
         LoginComponent,
         ProfilePageComponent,
+        UserCarComponent,
     ],
     providers: [
         UserService,
