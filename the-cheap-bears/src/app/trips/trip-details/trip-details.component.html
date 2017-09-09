@@ -1,3 +1,27 @@
-<p>
-  trip-details works!
-</p>
+
+  <div class="container">
+    <div>
+      <h2>{{trip.fromCity}} - {{trip.toCity}}</h2>
+      <h3>Your driver will be {{driver.username}}</h3>
+      <img [src]="driver.profileImageUrl" alt="Current user's profile picture.">
+      <p>Departure on {{trip.date}} at {{trip.departureTime.hours}} : {{trip.departureTime.minutes}}</p>
+      <p>The shared seat per passenger is {{trip.price}}</p>
+      <p>You can take 1 piece of {{trip.luggage}} luggage with you.</p>
+
+      <!--<p *ngIf="trip.passengers && trip.passengers.length > 0; else NoMoreSeats" >Still available seats: {{trip.freeSeats}}</p>-->
+      <p *ngIf="true; else NoMoreSeats" >Still available seats: {{trip.freeSeats}}</p>
+      <ng-template #NoMoreSeats>
+        <p>Sorry, no more seats </p>
+      </ng-template>
+      <p *ngIf="additionalComment != '{}'">Additional comments: {{trip.additionalComment}}</p>
+    </div>
+
+    <div>
+
+      <button class="btn btn-primary">Take your seat!</button>
+
+      <!--Като няма повече място в колата, бутона ще става disabled-->
+      <!--<button class="btn btn-primary" [disabled]="trip.passengers.length === 0">Take your seat!</button>-->
+    </div>
+  </div>
+
