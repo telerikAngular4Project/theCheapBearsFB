@@ -76,6 +76,15 @@
             </div>
 
             <div class="col-sm-5 col-sm-offset-2 input-wrapper">
+                    <div class="form-group">
+                        <label for="cars">Car list:</label>
+                        <select formControlName="cars" class="form-control" id="cars">
+                            <option *ngFor="let car of carList" [value]="car.make + ' ' + car.model">{{car.make}} {{car.model}}</option>
+                        </select>
+                    </div>
+                </div>
+
+            <div class="col-sm-5 col-sm-offset-2 input-wrapper">
                 <div class="form-group">
                     <label for="additionalComment">Additional comment: </label>
                     <textarea class="form-control" id="additionalComment" formControlName="additionalComment"></textarea>

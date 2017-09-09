@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
+import { DataService } from './../../shared/services/data.service';
 import { TripsService } from '../services/trips.service';
+import { AuthService } from './../../shared/services/auth.service';
 
 @Component({
     selector: 'app-trip-create',
@@ -13,6 +15,8 @@ import { TripsService } from '../services/trips.service';
 export class TripCreateComponent implements OnInit {
     tripForm: FormGroup;
     towns: any;
+    userId: string;
+    carList: any;
 
     public datePickerOptions = {
         format: 'DD.MM.YYYY',
@@ -28,12 +32,23 @@ export class TripCreateComponent implements OnInit {
     constructor(
         private _router: Router,
         private _tripService: TripsService,
-        private _fb: FormBuilder) {}
+        private _fb: FormBuilder,
+        private dataService: DataService,
+        private authService: AuthService,
+    ) { }
 
     ngOnInit() {
         this.createForm();
         this._tripService.getAllTowns()
             .subscribe((townsData) => this.towns = townsData.sort());
+        this.userId = this.authService.getCurrentUserId();
+        this.dataService.getCollection(`users/${this.userId}/cars`)
+            .subscribe((cars) => {
+                if (cars.length === 0) {
+                    this.tripForm.controls['cars'].disable();
+                }
+                this.carList = cars;
+            });
     }
 
     createForm() {
@@ -45,20 +60,21 @@ export class TripCreateComponent implements OnInit {
             'price': ['', [Validators.required, Validators.min(1), Validators.max(100)]],
             'luggage': ['', Validators.required],
             'seats': ['', [Validators.required, Validators.min(1), Validators.max(5)]],
+            'cars': ['', ],
             'additionalComment': ['', Validators.maxLength(100)]
         });
     }
 
     get departureTime(): any {
-      return this.tripForm.get('departureTime');
+        return this.tripForm.get('departureTime');
     }
 
     get price(): any {
-      return this.tripForm.get('price');
+        return this.tripForm.get('price');
     }
 
     get seats(): any {
-      return this.tripForm.get('seats');
+        return this.tripForm.get('seats');
     }
 
     submitTripData(tripData) {

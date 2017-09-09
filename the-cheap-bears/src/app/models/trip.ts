@@ -11,4 +11,5 @@ export class Trip {
     userId: string;
     luggage: number;
     passengers: any[];
+    car: any;
 }

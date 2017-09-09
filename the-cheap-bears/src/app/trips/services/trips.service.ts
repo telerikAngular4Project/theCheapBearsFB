@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
-import { Trip } from '../../models/trip';
 import { AuthService } from '../../shared/services/auth.service';
 import { DataService } from './../../shared/services/data.service';
-import { Observable } from 'rxjs/Observable';
-import {User} from "../../models/user";
+
+import {User} from '../../models/user';
+import { Trip } from '../../models/trip';
 
 @Injectable()
 export class TripsService {
@@ -65,7 +66,7 @@ export class TripsService {
         this.trip.createdOn = this.getCurrentDate();
         this.trip.passengers = new Array('a');
         this.trip.userId = userId;
-        console.log(this.trip.passengers);
+        this.trip.car = tripData.cars;
         return this.tripsCollectionFb.push(this.trip);
     }
 }
