@@ -7,6 +7,7 @@ import { Trip } from '../../models/trip';
 import { AuthService } from '../../shared/services/auth.service';
 import { DataService } from './../../shared/services/data.service';
 import { Observable } from 'rxjs/Observable';
+import {User} from "../../models/user";
 
 @Injectable()
 export class TripsService {
@@ -59,9 +60,12 @@ export class TripsService {
         };
         this.trip.price = tripData.price;
         this.trip.freeSeats = tripData.seats;
+        this.trip.luggage = tripData.luggage;
         this.trip.additionalComment = tripData.additionalComment;
         this.trip.createdOn = this.getCurrentDate();
+        this.trip.passengers = new Array('a');
         this.trip.userId = userId;
+        console.log(this.trip.passengers);
         return this.tripsCollectionFb.push(this.trip);
     }
 }

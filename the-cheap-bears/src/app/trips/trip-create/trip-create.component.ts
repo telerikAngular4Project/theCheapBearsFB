@@ -1,22 +1,18 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { TripsService } from '../services/trips.service';
-import { Trip } from '../../models/trip';
 
 @Component({
     selector: 'app-trip-create',
     templateUrl: './trip-create.component.html',
     styleUrls: ['./trip-create.component.css']
 })
+
 export class TripCreateComponent implements OnInit {
     tripForm: FormGroup;
     towns: any;
-    trip: Trip;
-    luggage: string;
-    name: string;
-    additionalComment: string;
 
     public datePickerOptions = {
         format: 'DD.MM.YYYY',
