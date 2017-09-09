@@ -34,4 +34,14 @@ export class DataService {
         const userImageRef = storageRef.child(`images/ ${uid}`);
         return userImageRef.put(image);
     }
+
+    pushNewItem(collectionName: string, item: Object) {
+        this.collection = this.getCollection(collectionName);
+        return this.collection.push(item);
+    }
+
+    removeItem(collectionName: string, key: string) {
+        this.collection = this.getCollection(collectionName);
+        return this.collection.remove(key);
+    }
 }

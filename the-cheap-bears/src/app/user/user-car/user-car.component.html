@@ -1,5 +1,42 @@
-<div class="container">
+<div class="container wrapper">
     <div class="row">
-        
+            <h3 class="cars-title">Car list:</h3>
+            <div *ngFor="let car of carList | async" class="col-xs-6  col-sm-4 col-lg-3">
+                <div class="car-item">
+                        <p>{{car.make}}</p>
+                        <p>{{car.model}}</p>
+                        <p>{{car.year}}</p>
+                        <button type="button" (click)="removeCar(car.$key)" class="btn btn-default remove-button">X</button>
+                </div>
+            </div>
+            <div class="col-sm-6 col-sm-offset-3 form-container">
+                    <form *ngIf="show" [formGroup]="carForm" (ngSubmit)="updateCarData()" novalidate >
+                            <div class="form-group">
+                                <label for="car-make">Make: </label>
+                                <select formControlName="make" class="form-control" id="car-make" (change)="getMakeModels($event.target.value)">
+                                        <option [selected]="true" disabled value="No car make specified.">Select your car make</option>
+                                        <option *ngFor="let make of carMakes" [value]="make">{{make}}</option>
+                                    </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="car-model">Model: </label>
+                                <select formControlName="model" class="form-control" id="car-model">
+                                        <option *ngFor="let model of makeModels?.Results" [value]="model.Model_Name">{{model.Model_Name}}</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="year">Year: </label>
+                                <select formControlName="year" class="form-control" id="year">
+                                        <option *ngFor="let year of years" [value]="year">{{year}}</option>
+                                </select>
+                            </div>
+                            <button class="btn btn-default" (click)="hideForm()" type="button">Return</button>
+                            <button type="submit" class="btn btn-default" [disabled]="!make.valid && !model.valid && !year.valid">Add this car to your profile</button>
+                        </form>
+            </div>
     </div>
+        
+        <div class="col-sm-12 text-center">
+            <button *ngIf="!show" class="btn btn-primary add-button" (click)="showForm()">Add new car</button>
+        </div>
 </div>

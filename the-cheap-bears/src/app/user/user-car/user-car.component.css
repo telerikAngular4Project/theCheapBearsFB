@@ -1,0 +1,33 @@
+.wrapper {
+    min-height: 1200px;
+}
+.car-item {
+    background-color: #F3F4F5;
+    border: 1px solid #BBBCBC;
+    color: #3C3D3D;
+    padding: 10px;
+    font-size: 20px;
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.cars-title {
+    margin-bottom: 20px;
+}
+
+.remove-button {
+    border-radius: 0;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+.add-button {
+    margin-top: 30px;
+    min-width: 300px;
+    text-transform: uppercase;
+}
+
+.form-container {
+    margin-top: 50px;
+}
