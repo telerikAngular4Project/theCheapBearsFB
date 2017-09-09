@@ -9,5 +9,6 @@ export class Trip {
     additionalComment: string;
     createdOn: string;
     userId: string;
-    baggage: number;
+    luggage: number;
+    passengers: any[];
 }
