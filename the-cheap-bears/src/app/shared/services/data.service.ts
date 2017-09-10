@@ -34,4 +34,8 @@ export class DataService {
         const userImageRef = storageRef.child(`images/ ${uid}`);
         return userImageRef.put(image);
     }
+
+    deleteTrip(tripId) { 
+        this.db.object(`/trips/${tripId}`).remove();
+    }
 }

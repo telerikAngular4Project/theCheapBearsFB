@@ -11,11 +11,11 @@
             <p>From: {{trip.fromCity}} To: {{trip.toCity}}</p>
             <p class="price">Price: {{trip.price}} lv.</p>
         </div> 
+        </a>   
         <div *ngIf="router.url === '/trips/mine'">
             <button>Edit</button>
-            <button>Delete</button>
-        </div>       
-    </a>    
+            <button (click)="delete(trip.$key)">Delete</button>
+        </div>            
 </div>
 <div *ngIf="!show" class="loader-wrap">
     <app-loader></app-loader>
