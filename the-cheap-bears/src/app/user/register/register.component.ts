@@ -13,8 +13,9 @@ import { usernameRegEx, passwordRegEx } from './../../helpers/patterns';
 export class RegisterComponent implements OnInit {
 
     public registerForm: FormGroup;
-
     submitted: boolean;
+    error = false;
+    errorMessage: string;
 
     constructor(private fb: FormBuilder, private userService: UserService, private router: Router) {
     }
@@ -38,7 +39,6 @@ export class RegisterComponent implements OnInit {
     get password(): any { return this.registerForm.get('password'); }
 
 
-    // form submit
     onSubmit() {
         const userData = this.registerForm.value;
         this.userService.register(userData)
@@ -49,8 +49,11 @@ export class RegisterComponent implements OnInit {
                 }, 2000);
             })
             .catch((err) => {
-                console.log(err.message);
-                // do something with errors(this is server-side validation)
+                this.error = true;
+                this.errorMessage = err.message;
+                setTimeout (() => {
+                    this.error = false;
+                }, 2000);
             });
     }
 }

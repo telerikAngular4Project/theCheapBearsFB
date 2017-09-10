@@ -9,10 +9,21 @@ import { passwordRegEx } from './../../helpers/patterns';
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
 
     public loginForm: FormGroup;
-    constructor(private fb: FormBuilder, private userService: UserService, private router: Router) {
+    error = false;
+    errorMessage: string;
+    submitted: boolean;
+
+    constructor(
+        private fb: FormBuilder,
+        private userService: UserService,
+        private router: Router
+    ) {}
+
+    ngOnInit() {
+        this.submitted = false;
         this.createForm();
     }
 
@@ -30,11 +41,17 @@ export class LoginComponent {
             const userData = this.loginForm.value;
             this.userService.login(userData.email, userData.password)
             .then(() => {
-                this.router.navigateByUrl('');
+                this.submitted = true;
+                setTimeout(() => {
+                    this.router.navigateByUrl('');
+                }, 2000);
             })
             .catch((err) => {
-                console.log(err.message);
-                // do something with errors(this is serverside validation)
+                this.error = true;
+                this.errorMessage = err.message;
+                setTimeout (() => {
+                    this.error = false;
+                }, 2000);
             });
         }
 
