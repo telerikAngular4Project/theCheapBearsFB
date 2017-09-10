@@ -15,6 +15,7 @@ import { TripDetailsComponent } from './trip-details/trip-details.component';
 
 import { TripsService } from './services/trips.service';
 import { FilterTripsPipe } from './pipes/filter-trips.pipe';
+import { StringFromArrPipe } from './pipes/string-from-arr.pipe';
 
 @NgModule({
     imports: [
@@ -33,6 +34,7 @@ import { FilterTripsPipe } from './pipes/filter-trips.pipe';
         TripItemComponent,
         TripDetailsComponent,
         FilterTripsPipe,
+        StringFromArrPipe
     ],
     providers: [
         TripsService,
