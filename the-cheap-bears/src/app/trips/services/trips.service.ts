@@ -1,38 +1,28 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
-import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
 import { AuthService } from '../../shared/services/auth.service';
 import { DataService } from './../../shared/services/data.service';
 
-import {User} from '../../models/user';
 import { Trip } from '../../models/trip';
 
 @Injectable()
 export class TripsService {
     private _townsUrl = './../../../assets/cities/cities.json';
     private trip: Trip;
-    private tripsCollectionFb: FirebaseListObservable<any>;
 
     constructor(
         private http: Http,
         private _authService: AuthService,
-        private db: AngularFireDatabase,
-        private dataService: DataService
-    ) {
-        this.tripsCollectionFb = this.db.list('/trips');
+        private dataService: DataService) {
     }
 
     getAllTowns() {
         return this.http.get(this._townsUrl)
             .map((response: Response) =>
                 response.json());
-    }
-
-    getAllTrips() {
-        return this.tripsCollectionFb;
     }
 
     getCurrentDate() {
@@ -64,9 +54,10 @@ export class TripsService {
         this.trip.luggage = tripData.luggage;
         this.trip.additionalComment = tripData.additionalComment;
         this.trip.createdOn = this.getCurrentDate();
-        this.trip.passengers = new Array('a');
         this.trip.userId = userId;
+        this.trip.passengers = ['.'];
         this.trip.car = tripData.cars;
-        return this.tripsCollectionFb.push(this.trip);
+
+        return this.dataService.pushNewItem('trips', this.trip);
     }
 }

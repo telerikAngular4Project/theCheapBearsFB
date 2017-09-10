@@ -8,11 +8,12 @@ import { LoaderComponent } from './loader/loader.component';
 import { TimeFormatPipe } from './pipes/time-format.pipe';
 import { HoverDirective } from './directives/hover.directive';
 
+
 @NgModule({
     declarations: [
         LoaderComponent,
         TimeFormatPipe,
-        HoverDirective,
+        HoverDirective
     ],
     providers: [
         AuthService,
