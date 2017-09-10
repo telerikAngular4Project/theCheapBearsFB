@@ -26,12 +26,6 @@ export class AuthService {
         return this.user;
     }
 
-    getUserID() {
-        this.user.subscribe((user) => {
-            return user.uid;
-        });
-    }
-
     logOut() {
         return this._afAuth.auth.signOut();
     }
