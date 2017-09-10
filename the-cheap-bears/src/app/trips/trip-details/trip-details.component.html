@@ -1,25 +1,70 @@
-<div *ngIf="show" class="container">
-    <div>
-        <h2>{{trip.fromCity}} - {{trip.toCity}}</h2>
-        <h3>Your driver will be {{driver.username}}</h3>
-        <h3 *ngIf="trip.car">Vehical: {{trip.car}}</h3>
-        <img [src]="driver.profileImageUrl" alt="Current user's profile picture.">
-        <p>Departure on {{trip.date}} at {{trip.departureTime.hours}} : {{trip.departureTime.minutes}}</p>
-        <p>The shared seat per passenger is {{trip.price}}</p>
-        <p>You can take 1 piece of {{trip.luggage}} luggage with you.</p>
-
-        <!--<p *ngIf="trip.passengers && trip.passengers.length > 0; else NoMoreSeats" >Still available seats: {{trip.freeSeats}}</p>-->
-        <p *ngIf="true; else NoMoreSeats">Still available seats: {{trip.freeSeats}}</p>
-        <ng-template #NoMoreSeats>
-            <p>Sorry, no more seats </p>
-        </ng-template>
-        <p *ngIf="additionalComment != '{}'">Additional comments: {{trip.additionalComment}}</p>
+<div *ngIf="show" class="container wrapper">
+    <div class="row">
+        <div class="col-sm-8 col-sm-offset-2 title-wrapper">
+            <h1 class="details-title">Trip details:</h1>
+        </div>
+        <div class="col-sm-8 col-sm-offset-2 info-wrapper">
+            <div class="row">
+                <div class="col-sm-8 col-sm-offset-2 text-center destination">
+                    {{trip.fromCity}} - {{trip.toCity}}
+                </div>
+                <div class="col-sm-8 col-sm-offset-2 departure info-section">Departure on:
+                    <div class="right-field">
+                        {{trip.date}} at {{trip.departureTime.hours}} : {{trip.departureTime.minutes}}
+                    </div>
+                </div>
+                <div class="col-sm-8 col-sm-offset-2 price info-section">
+                    Price per seat:
+                    <div class="right-field">
+                        {{trip.price}}
+                    </div>
+                </div>
+                <div class="col-sm-8 col-sm-offset-2 driver info-section">
+                    Your driver:
+                    <div class="img-container-wrapper">
+                        <div class="img-container">
+                            <img [src]="driver.profileImageUrl" alt="Current user's profile picture.">
+                        </div>
+                        <span class="username">{{driver.username}}</span>
+                    </div>
+                </div>
+                <div *ngIf="trip.car" class="col-sm-8 col-sm-offset-2 vehicle info-section">
+                    Vehical: 
+                    <div class="right-field">
+                        {{trip.car}}
+                    </div>
+                </div>
+                <div class="col-sm-8 col-sm-offset-2 luggage info-section">
+                    Luggage size:
+                    <div class="right-field">
+                        {{trip.luggage}}
+                    </div>
+                </div>
+                <div class="col-sm-8 col-sm-offset-2 seats info-section">
+                    <div *ngIf="true; else NoMoreSeats">
+                        Still available seats: 
+                        <div class="right-field">
+                                {{trip.freeSeats}}
+                        </div>
+                    </div>
+                    <ng-template #NoMoreSeats>
+                        <p>Sorry, no more seats </p>
+                    </ng-template>
+                </div>
+                <div *ngIf="additionalComment != '{}'" class="col-sm-8 col-sm-offset-2 add-info info-section">
+                    Additional comments: 
+                    <div class="comments">
+                            {{trip.additionalComment}}
+                    </div>
+                </div>
+                <div class="col-sm-12 text-center submit-button">
+                    <button class="btn btn-primary">Take your seat!</button>
+                </div>
+            </div>
+            <!--<p *ngIf="trip.passengers && trip.passengers.length > 0; else NoMoreSeats" >Still available seats: {{trip.freeSeats}}</p>-->
+        </div>
     </div>
-
     <div>
-
-        <button class="btn btn-primary">Take your seat!</button>
-
         <!--Като няма повече място в колата, бутона ще става disabled-->
         <!--<button class="btn btn-primary" [disabled]="trip.passengers.length === 0">Take your seat!</button>-->
     </div>

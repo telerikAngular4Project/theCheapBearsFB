@@ -1,8 +1,90 @@
-img {
-  width: 100px;
-  height: 100px;
+:host ::ng-deep>app-loader>.loader-wrapper {
+  top: 40%;
 }
 
-:host ::ng-deep > app-loader > .loader-wrapper{
-    top: 40%;
+.wrapper {
+    min-height: 1200px;
+}
+
+.title-wrapper {
+    border-bottom: 1px solid #BBBCBC;
+}
+
+.details-title {
+    font-size: 18px;
+}
+
+.info-wrapper {
+    padding: 20px;
+    color: #3C3D3D;
+    font-size: 18px;
+}
+
+.info-section {
+    border-bottom: 1px solid #F3F4F5;
+    padding: 0 10px 5px;
+    margin-bottom: 10px;
+    word-wrap: break-word;
+    min-height: 30px;
+}
+
+.destination {
+    font-weight: bold;
+    font-size: 22px;
+    text-transform: uppercase;
+}
+
+.right-field {
+    float: right;
+    word-wrap: break-word;
+}
+
+.destination {
+    min-height: 50px;
+}
+
+.comments {
+    text-align: center;
+}
+
+.img-container-wrapper {
+    float: right;
+}
+
+.img-container {
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+.img-container img {
+  object-fit: cover;
+  width: 60px;
+  height: 60px;
+}
+
+.submit-button {
+    border-top: 1px solid #BBBCBC;
+    padding-top: 15px;
+    margin-top: 20px;
+}
+
+.submit-button > button {
+    text-transform: uppercase;
+}
+
+
+
+@media screen and (max-width: 768px) {
+    .info-section {
+        min-height: 40px;
+    }
+
+    .driver {
+        overflow: hidden;
+    }
 }
