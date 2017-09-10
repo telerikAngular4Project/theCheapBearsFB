@@ -1,5 +1,5 @@
 import { SharedModule } from './shared/shared.module';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Title } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AngularFireModule } from 'angularfire2';
@@ -17,24 +17,27 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { PageNotFoundComponent } from './shared/not-found/not-found.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    FooterComponent,
-    PageNotFoundComponent,
-  ],
-  imports: [
-    BrowserModule,
-    AngularFireModule.initializeApp(firebaseConfig),
-    AngularFireAuthModule,
-    AngularFireDatabaseModule,
-    HomeModule,
-    UserModule,
-    SharedModule,
-    AppRoutingModule
-  ],
-  bootstrap: [
-      AppComponent
+    declarations: [
+        AppComponent,
+        HeaderComponent,
+        FooterComponent,
+        PageNotFoundComponent,
+    ],
+    imports: [
+        BrowserModule,
+        AngularFireModule.initializeApp(firebaseConfig),
+        AngularFireAuthModule,
+        AngularFireDatabaseModule,
+        HomeModule,
+        UserModule,
+        SharedModule,
+        AppRoutingModule
+    ],
+    providers: [
+        Title,
+    ],
+    bootstrap: [
+        AppComponent
     ],
 })
 export class AppModule { }

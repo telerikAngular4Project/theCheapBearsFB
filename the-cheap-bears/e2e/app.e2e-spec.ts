@@ -9,6 +9,6 @@ describe('the-cheap-bears App', () => {
 
   it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welcome to app!');
+    expect(page.getParagraphText()).toEqual('NoTicket');
   });
 });
