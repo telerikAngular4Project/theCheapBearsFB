@@ -1,10 +1,10 @@
-import {ActivatedRoute} from '@angular/router';
-import {Component, OnInit} from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/operator/map';
 
-import {DataService} from '../../shared/services/data.service';
-import {AuthService} from '../../shared/services/auth.service';
+import { DataService } from '../../shared/services/data.service';
+import { AuthService } from '../../shared/services/auth.service';
 
 @Component({
   selector: 'app-trip-details',
