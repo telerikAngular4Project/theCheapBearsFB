@@ -1,28 +1,16 @@
-# TheCheapBears
+# NoTicket
+---
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.3.0.
+### Angular application project developed for 'Angular' course in Telerik Academy
+---
+### App description
+Platform for shared travel. Access to routes with restrictions is limited through authorization checks. 
 
-## Development server
+The user can update his profile with some valuable information about him and he can add the cars that he own/use. All that information is going to help to another user to decide if he wants to travel with him.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+The user can also create new trips, he can manage them with edit and delete functionality. 
+Each user is allowed to assign himself to each trip in the list, but only if there are some free seats. There is filter functionality, which gives to the user to find fast and easy the ads which meet the user requirements.
 
-## Code scaffolding
+##### YouTube Video - URL here
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+##### Live demo - URL here
