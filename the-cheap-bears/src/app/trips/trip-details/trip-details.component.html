@@ -29,7 +29,7 @@
                     </div>
                 </div>
                 <div *ngIf="trip.car" class="col-sm-8 col-sm-offset-2 vehicle info-section">
-                    Vehical: 
+                    Vehicle: 
                     <div class="right-field">
                         {{trip.car}}
                     </div>
@@ -51,7 +51,7 @@
                         <p>Sorry, no more seats </p>
                     </ng-template>
                 </div>
-                <div *ngIf="additionalComment != '{}'" class="col-sm-8 col-sm-offset-2 add-info info-section">
+                <div *ngIf="trip.additionalComment != '{}'" class="col-sm-8 col-sm-offset-2 add-info info-section">
                     Additional comments: 
                     <div class="comments">
                             {{trip.additionalComment}}
