@@ -29,7 +29,7 @@
                     </div>
                 </div>
                 <div *ngIf="trip.car" class="col-sm-8 col-sm-offset-2 vehicle info-section">
-                    Vehical: 
+                    Vehical:
                     <div class="right-field">
                         {{trip.car}}
                     </div>
@@ -41,32 +41,40 @@
                     </div>
                 </div>
                 <div class="col-sm-8 col-sm-offset-2 seats info-section">
-                    <div *ngIf="true; else NoMoreSeats">
-                        Still available seats: 
+                    <div>
+                        Still available seats:
                         <div class="right-field">
                                 {{trip.freeSeats}}
                         </div>
                     </div>
-                    <ng-template #NoMoreSeats>
-                        <p>Sorry, no more seats </p>
-                    </ng-template>
                 </div>
-                <div *ngIf="additionalComment != '{}'" class="col-sm-8 col-sm-offset-2 add-info info-section">
-                    Additional comments: 
+
+
+              <div class="col-sm-8 col-sm-offset-2 seats info-section" *ngIf="trip.passengers">
+                <div>
+                  Passengers:
+                  <div class="right-field">
+                    <ul>
+                      <li *ngFor="let passangerr of trip.passengers">
+                        {{passangerr.username}}
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+
+                <div *ngIf="trip.additionalComment != '{}'" class="col-sm-8 col-sm-offset-2 add-info info-section">
+                    Additional comments:
                     <div class="comments">
                             {{trip.additionalComment}}
                     </div>
                 </div>
                 <div class="col-sm-12 text-center submit-button">
-                    <button class="btn btn-primary">Take your seat!</button>
+                  <button class="btn btn-primary" (click)="reserveSeat()" [disabled]="isButtonDisabled">Take your seat!</button>
                 </div>
             </div>
-            <!--<p *ngIf="trip.passengers && trip.passengers.length > 0; else NoMoreSeats" >Still available seats: {{trip.freeSeats}}</p>-->
         </div>
-    </div>
-    <div>
-        <!--Като няма повече място в колата, бутона ще става disabled-->
-        <!--<button class="btn btn-primary" [disabled]="trip.passengers.length === 0">Take your seat!</button>-->
     </div>
 </div>
 <app-loader *ngIf="!show"></app-loader>
