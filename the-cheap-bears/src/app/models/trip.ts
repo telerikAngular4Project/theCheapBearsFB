@@ -12,4 +12,5 @@ export class Trip {
     luggage: number;
     passengers: any[];
     car: any;
+    ['$key']: string;
 }

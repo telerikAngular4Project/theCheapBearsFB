@@ -22,7 +22,7 @@ export class DataService {
     }
 
     queryCollection(collectionName: string, queryParameter: Object) {
-       return this.db.list(collectionName, queryParameter);
+        return this.db.list(collectionName, queryParameter);
     }
 
     queryByKey(collectionName, key) {
@@ -43,5 +43,9 @@ export class DataService {
     removeItem(collectionName: string, key: string) {
         this.collection = this.getCollection(collectionName);
         return this.collection.remove(key);
+    }
+
+    deleteTrip(tripId) {
+        return this.db.object(`/trips/${tripId}`).remove();
     }
 }

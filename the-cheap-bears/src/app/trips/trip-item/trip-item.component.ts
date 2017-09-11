@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
+import { AuthService } from './../../shared/services/auth.service';
 import { DataService } from './../../shared/services/data.service';
 
 import { Trip } from './../../models/trip';
@@ -19,6 +21,8 @@ export class TripItemComponent implements OnInit {
 
     constructor(
         private dataService: DataService,
+        private authService: AuthService,
+        public router: Router,
     ) { }
 
 
@@ -32,5 +36,9 @@ export class TripItemComponent implements OnInit {
                 this.user = data;
                 this.show = true;
             });
+    }
+
+    public delete(tripId: string) {
+        this.dataService.deleteTrip(tripId);
     }
 }
