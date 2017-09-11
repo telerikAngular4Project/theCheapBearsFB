@@ -13,6 +13,7 @@
             <ul class="nav navbar-nav">
                 <li><a routerLink="trips">Trips</a></li>
                 <li *ngIf="authService.user | async"><a routerLink="trips/create">Create trip</a></li>
+                <li *ngIf="authService.user | async"><a routerLink="trips/mine">My trips</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li *ngIf="!(authService.user | async)"><a routerLink="login">Log in</a></li>

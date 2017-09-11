@@ -1,34 +1,38 @@
 <div *ngIf="show">
-        <a [routerLink]="['/trips/details']" [queryParams]="{id:trip.$key}" class="anchor-trip">
-            <div class="row">
-                <div class="col-sm-1 profile">
-                    <div class="profile-img">
-                        <img [src]="user.profileImageUrl" alt="Current user's profile picture.">
-                    </div>
-                    <p>{{user.username}}</p>
+    <a [routerLink]="['/trips/details']" [queryParams]="{id:trip.$key}" class="anchor-trip">
+        <div class="row">
+            <div class="col-sm-1 profile">
+                <div class="profile-img">
+                    <img [src]="user.profileImageUrl" alt="Current user's profile picture.">
                 </div>
-                <div class="col-lg-10 directions">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <p>{{trip.date}} at {{departureTime.hours | timeFormat}}:{{departureTime.minutes | timeFormat}}</p>
-                        </div>
-                        <div class="col-sm-6">
-                            <p><span class="from">From:</span> {{trip.fromCity}}</p>
-                        </div>
-                        <div class="col-sm-6">
-                            <p><span class="to">To:</span> {{trip.toCity}}</p>
-                        </div>
-                        <div class="col-sm-6">
-                            <p class="price">Price: {{trip.price}} lv.</p>
-                        </div>
-                        <div class="col-sm-6">
-                            <p>Seats left: {{trip.freeSeats}}</p>
-                        </div>
+                <p>{{user.username}}</p>
+            </div>
+            <div class="col-lg-10 directions">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <p>{{trip.date}} at {{departureTime.hours | timeFormat}}:{{departureTime.minutes | timeFormat}}</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <p><span class="from">From:</span> {{trip.fromCity}}</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <p><span class="to">To:</span> {{trip.toCity}}</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <p class="price">Price: {{trip.price}} lv.</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <p>Seats left: {{trip.freeSeats}}</p>
                     </div>
                 </div>
             </div>
-        </a>
-    </div>
-    <div *ngIf="!show" class="loader-wrap">
-        <app-loader></app-loader>
-    </div>
+        </div>
+    </a>
+</div>
+<div *ngIf="router.url === '/trips/mine'">
+    <button>Edit</button>
+    <button (click)="delete(trip.$key)">Delete</button>
+</div>
+<div *ngIf="!show" class="loader-wrap">
+    <app-loader></app-loader>
+</div>

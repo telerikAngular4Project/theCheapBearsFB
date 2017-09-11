@@ -11,11 +11,12 @@ import { SharedModule } from './../shared/shared.module';
 import { TripCreateComponent } from './trip-create/trip-create.component';
 import { TripsListingComponent } from './trips-listing/trips-listing.component';
 import { TripItemComponent } from './trip-item/trip-item.component';
-import { TripDetailsComponent } from './trip-details/trip-details.component';
 
 import { TripsService } from './services/trips.service';
 import { FilterTripsPipe } from './pipes/filter-trips.pipe';
 import { StringFromArrPipe } from './pipes/string-from-arr.pipe';
+import { TripDetailsComponent } from './trip-details/trip-details.component';
+import { MyTripsComponent } from './my-trips/my-trips.component';
 
 @NgModule({
     imports: [
@@ -34,7 +35,8 @@ import { StringFromArrPipe } from './pipes/string-from-arr.pipe';
         TripItemComponent,
         TripDetailsComponent,
         FilterTripsPipe,
-        StringFromArrPipe
+        StringFromArrPipe,
+        MyTripsComponent,
     ],
     providers: [
         TripsService,
