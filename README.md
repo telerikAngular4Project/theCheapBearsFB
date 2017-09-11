@@ -16,8 +16,4 @@ Each user is allowed to assign himself to each trip in the list, but only if the
 
 ### [live demo](https://thecheapbears-38177.firebaseapp.com)
 
-# Course Project
-_Web Applications with Angular_
-
-This document describes the **course project assignment** for the [Single-page Applications with Angular](telerikacademy.com/courses/courses/Details/441) at Telerik Academy.
 
