@@ -39,9 +39,6 @@ export class TripItemComponent implements OnInit {
     }
 
     public delete(tripId: string) {
-        if (confirm('Are you sure?')) {
-            this.dataService.deleteTrip(tripId);
-            location.reload();
-        }
+        this.dataService.deleteTrip(tripId);
     }
 }

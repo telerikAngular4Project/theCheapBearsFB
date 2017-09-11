@@ -46,6 +46,6 @@ export class DataService {
     }
 
     deleteTrip(tripId) {
-        this.db.object(`/trips/${tripId}`).remove();
+        return this.db.object(`/trips/${tripId}`).remove();
     }
 }
